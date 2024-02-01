@@ -1,6 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 
 
 class Shopping_list(db.Model):
@@ -15,6 +14,7 @@ class Shopping_list(db.Model):
     request = db.Column(db.Boolean, nullable=False)
 
     # Relationships
+    family = relationship("Family", back_populates="shopping_lists")
 
     def to_dict(self):
         return {

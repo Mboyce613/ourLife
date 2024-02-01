@@ -1,7 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
-
+from sqlalchemy.orm import relationship
 
 class Income(db.Model):
     __tablename__ = 'incomes'
@@ -15,7 +13,7 @@ class Income(db.Model):
     amount = db.Column(db.Integer(), nullable=False)
 
     # Relationships
-
+    user = relationship("User", back_populates="incomes")
 
     def to_dict(self):
         return {

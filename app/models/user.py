@@ -1,6 +1,8 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
+from .user_family import user_families
 
 
 class User(db.Model, UserMixin):
@@ -17,6 +19,14 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(255), nullable=False)
 
     # Relationships
+    expenses = relationship("Expense", back_populates="user")
+    incomes = relationship("Income", back_populates="user")
+    medications = relationship("Medication", back_populates="user")
+    appointments = relationship("Appointment", back_populates="user")
+
+    families = relationship("Family",
+                            secondary=user_families,
+                            back_populates="users")
 
     @property
     def password(self):
@@ -32,8 +42,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'is_dependent': self.is_dependent,
+            'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'email': self.email,
-            'is_dependent': self.is_dependent,
         }

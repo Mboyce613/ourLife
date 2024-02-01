@@ -1,6 +1,7 @@
 from app.models import db, Appointment, environment, SCHEMA
 from sqlalchemy.sql import text
 import datetime as dt
+
 new_date = dt.date.today()
 minutes = dt.timedelta(minutes=30)
 hours = dt.timedelta(hours=2)

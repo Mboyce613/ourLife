@@ -1,10 +1,8 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 import datetime as dt
 
 dt.timedelta
-
 
 class Appointment(db.Model):
     __tablename__ = 'appointments'
@@ -20,6 +18,7 @@ class Appointment(db.Model):
     request = db.Column(db.Boolean, nullable=False)
 
     # Relationships
+    user = relationship("User", back_populates="appointments")
 
 
     def to_dict(self):
@@ -31,9 +30,3 @@ class Appointment(db.Model):
             'duration': self.duration,
             'request': self.request
         }
-
-#! Next make model and seed for :
-#! User families
-
-#! Then:
-#! Make Relationships
