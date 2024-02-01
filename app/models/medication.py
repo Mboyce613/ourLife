@@ -1,13 +1,10 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-import datetime as dt
-
-dt.timedelta
 
 
-class Appointment(db.Model):
-    __tablename__ = 'appointments'
+class Medication(db.Model):
+    __tablename__ = 'medications'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -15,9 +12,8 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
     name = db.Column(db.String(255), nullable=False)
-    start_date = db.Column(db.dt.date, nullable=False)
-    duration = db.Column(db.dt.timedelta, nullable=False)
-    request = db.Column(db.Boolean, nullable=False)
+    dosage = db.Column(db.String(255), nullable=False)
+    time = db.Column(db.String(255), nullable=False)
 
     # Relationships
 
@@ -27,13 +23,5 @@ class Appointment(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'name': self.name,
-            'start_date': self.start_date,
-            'duration': self.duration,
-            'request': self.request
+            'amount': self.amount
         }
-
-#! Next make model and seed for :
-#! User families
-
-#! Then:
-#! Make Relationships
