@@ -26,10 +26,9 @@ def seed():
         db.session.commit()
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
-    seed_users()
+    seed_user_families()
     seed_users()
     seed_families()
-    seed_user_families()
     seed_incomes()
     seed_expenses()
     seed_medications()
