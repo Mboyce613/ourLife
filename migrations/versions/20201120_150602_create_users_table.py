@@ -76,7 +76,7 @@ def upgrade():
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('request', sa.Boolean, nullable=False),
     sa.Column('start_date', sa.DateTime, nullable=False),
-    sa.Column('duration', sa.DateTime, nullable=False),
+    sa.Column('duration', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),

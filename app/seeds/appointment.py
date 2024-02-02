@@ -9,11 +9,11 @@ days = dt.timedelta(days=1)
 # Adds a demo user, you can add other appointments here if you want
 def seed_appointments():
     demo1 = Appointment(
-        user_id=1, name='Hair Cut', start_date=new_date, duration=minutes, request = False)
+        user_id=1, name='Hair Cut', start_date=new_date, duration=1, request = False)
     demo2 = Appointment(
-        user_id=2, name='Play Date with Jhon', start_date=new_date, duration=hours, request = True)
+        user_id=2, name='Play Date with Jhon', start_date=new_date, duration=2, request = True)
     demo3 = Appointment(
-        user_id=3, name='Visit Nursing Home', start_date=new_date, duration=days, request = False)
+        user_id=3, name='Visit Nursing Home', start_date=new_date, duration=24, request = False)
     
     db.session.add(demo1)
     db.session.add(demo2)
