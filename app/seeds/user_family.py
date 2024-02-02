@@ -1,4 +1,4 @@
-from app.models import db, user_families, environment, SCHEMA
+from app.models import db, User, Family, user_families, environment, SCHEMA
 from sqlalchemy.sql import text
 from sqlalchemy import insert
 
@@ -11,9 +11,18 @@ def seed_user_families():
     #     user_id=2, family_id=1)
     # demo3 = user_families(
     #     user_id=3, family_id=1)
-    demo1 = insert(user_families).values(user_id=1, family_id=1)
-    demo2 = insert(user_families).values(user_id=2, family_id=1)
-    demo3 = insert(user_families).values(user_id=3, family_id=1)
+    # demo1 = db.insert(user_families).values(user_id=1, family_id=1)
+    # demo2 = db.insert(user_families).values(user_id=2, family_id=1)
+    # demo3 = db.insert(user_families).values(user_id=3, family_id=1)
+    demo1 = User.query.get(1)
+    fam1 = Family.query.get(1)
+    demo1.families.append(fam1)
+
+    demo2 = User.query.get(2)
+    demo2.families.append(fam1)
+
+    demo3 = User.query.get(3)
+    demo3.families.append(fam1)
     
     db.session.add(demo1)
     db.session.add(demo2)
