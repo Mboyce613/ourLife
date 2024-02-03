@@ -68,49 +68,50 @@ const initialState = { user: null };
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      let newState = {...state}
-      console.log("ACTION.PAYLOAD", action.payload)
-      newState['id'] = action.payload.id
-      newState['first_name'] = action.payload.first_name
-      newState['last_name'] = action.payload.last_name
-      newState['email'] = action.payload.email
-      newState['is_dependent'] = action.payload.is_dependent
+      let newState = {...state, user:{}}
+      // console.log("ACTION.PAYLOAD", action.payload)
+      newState.user['id'] = action.payload.id
+      newState.user['first_name'] = action.payload.first_name
+      newState.user['last_name'] = action.payload.last_name
+      newState.user['email'] = action.payload.email
+      newState.user['is_dependent'] = action.payload.is_dependent
+      // newState.user.id = action.payload.id
 
       if(action.payload.appointments){
-        newState['appointments'] = []
+        newState.user['appointments'] = []
         action.payload.appointments.forEach(app => {
-          newState['appointments'][app.id] = app
+          newState.user['appointments'][app.id] = app
         });
       }
       if(action.payload.expenses){
-        newState['expenses'] = []
+        newState.user['expenses'] = []
         action.payload.expenses.forEach(exp => {
-          newState['expenses'][exp.id] = exp
+          newState.user['expenses'][exp.id] = exp
         });
       }
       if(action.payload.incomes){
-        newState['incomes'] = []
+        newState.user['incomes'] = []
         action.payload.incomes.forEach(income => {
-          newState['incomes'][income.id] = income
+          newState.user['incomes'][income.id] = income
         });
       }
       if(action.payload.medications){
-        newState['medications'] = []
+        newState.user['medications'] = []
         action.payload.medications.forEach(med => {
-          newState['medications'][med.id] = med
+          newState.user['medications'][med.id] = med
         });
       }
       if(action.payload.families){
-        newState['families'] = []
+        newState.user['families'] = []
         action.payload.families.forEach(family => {
           const newList = []
-          console.log("SHOPP", family.shopping_lists)
+          // console.log("SHOPP", family.shopping_lists)
           family.shopping_lists.forEach(list=>{
             newList[list.id] = list
           })
-          console.log("NEWSHOPP", newList)
+          // console.log("NEWSHOPP", newList)
           family.shopping_lists = newList
-          newState['families'][family.id] = family
+          newState.user['families'][family.id] = family
         });
       }
 

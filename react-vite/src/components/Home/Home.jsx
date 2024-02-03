@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../redux/user";
 
 const Home = () => {
-    const sessionUser = useSelector((state) => state.session);
+    const sessionUser = useSelector((state) => state.session.user);
     // const dispatch = useDispatch()
     // const [isLoaded, setIsLoaded] = useState(false)
 
