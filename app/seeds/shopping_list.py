@@ -7,9 +7,9 @@ def seed_shopping_lists():
     demo1 = Shopping_list(
         family_id=1, item_name='Milk', request=False)
     demo2 = Shopping_list(
-        family_id=2, item_name='Candy', request=True)
+        family_id=1, item_name='Candy', request=True)
     demo3 = Shopping_list(
-        family_id=3, item_name='Eggs', request=False)
+        family_id=1, item_name='Eggs', request=False)
     
     db.session.add(demo1)
     db.session.add(demo2)
