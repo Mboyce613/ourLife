@@ -91,7 +91,14 @@ def upgrade():
     )
 
     if environment == "production":
+        op.execute(f"ALTER TABLE families SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE shopping_lists SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE incomes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE expenses SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE medications SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE appointments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE user_families SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###qqqqqqqqq
 
 
