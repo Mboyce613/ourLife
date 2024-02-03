@@ -23,5 +23,6 @@ class Family(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'motto': self.motto
+            'motto': self.motto,
+            # 'users':[user.to_dict() for user in self.users]
         }
