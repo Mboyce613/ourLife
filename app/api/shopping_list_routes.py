@@ -6,14 +6,14 @@ from app.models import db
 
 shopping_list_routes = Blueprint('shopping_lists', __name__)
 
-@shopping_list_routes.route('/<int:familyId>')
+@shopping_list_routes.route('/<int:id>')
 @login_required
 # @login_required
-def get_shopping_lists(familyId):
+def get_shopping_lists(id):
     """
     Query for all shopping_lists and returns them in a list of shopping_lists dictionaries
     """
-    shopping_lists = Shopping_list.query.filter(Shopping_list.family_id == familyId)
+    shopping_lists = Shopping_list.query.filter(Shopping_list.id == id)
     return {'shopping_lists': [shopping_list.to_dict() for shopping_list in shopping_lists]}
 
 

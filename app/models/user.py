@@ -46,10 +46,10 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'families':[family.to_dict() for family in self.families]
+            'families':[family.to_dict() for family in self.families],
+            'expenses':[expense.to_dict() for expense in self.expenses],
+            'incomes':[income.to_dict() for income in self.incomes],
+            'medications':[medication.to_dict() for medication in self.medications],
+            'appointments':[appointment.to_dict() for appointment in self.appointments],
         }
     
-    def families(self):
-        return {
-            'families':self.family.to_dict()
-        }

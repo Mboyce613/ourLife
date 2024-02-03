@@ -1,8 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, session
 from flask_login import login_required
 from app.models import Family, user_families, User
 from app.models import db
-
 
 family_routes = Blueprint('families', __name__)
 
@@ -15,7 +14,6 @@ def families(userId):
     """
     users = User.query.filter(User.id == userId)
     return {'families': [user.to_dict() for user in users]}
-
 
 
 @family_routes.route('/<int:id>', methods=["DELETE"])
