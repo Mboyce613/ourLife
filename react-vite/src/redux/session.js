@@ -68,7 +68,54 @@ const initialState = { user: null };
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      return { ...state, user: action.payload };
+      let newState = {...state}
+      console.log("ACTION.PAYLOAD", action.payload)
+      newState['id'] = action.payload.id
+      newState['first_name'] = action.payload.first_name
+      newState['last_name'] = action.payload.last_name
+      newState['email'] = action.payload.email
+      newState['is_dependent'] = action.payload.is_dependent
+
+      if(action.payload.appointments){
+        newState['appointments'] = []
+        action.payload.appointments.forEach(app => {
+          newState['appointments'][app.id] = app
+        });
+      }
+      if(action.payload.expenses){
+        newState['expenses'] = []
+        action.payload.expenses.forEach(exp => {
+          newState['expenses'][exp.id] = exp
+        });
+      }
+      if(action.payload.incomes){
+        newState['incomes'] = []
+        action.payload.incomes.forEach(income => {
+          newState['incomes'][income.id] = income
+        });
+      }
+      if(action.payload.medications){
+        newState['medications'] = []
+        action.payload.medications.forEach(med => {
+          newState['medications'][med.id] = med
+        });
+      }
+      if(action.payload.families){
+        newState['families'] = []
+        action.payload.families.forEach(family => {
+          const newList = []
+          console.log("SHOPP", family.shopping_lists)
+          family.shopping_lists.forEach(list=>{
+            newList[list.id] = list
+          })
+          console.log("NEWSHOPP", newList)
+          family.shopping_lists = newList
+          newState['families'][family.id] = family
+        });
+      }
+
+      return {...newState}
+      // return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
     default:

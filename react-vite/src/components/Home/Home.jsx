@@ -1,9 +1,22 @@
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById } from "../../redux/user";
 
 const Home = () => {
+    const sessionUser = useSelector((state) => state.session);
+    // const dispatch = useDispatch()
+    // const [isLoaded, setIsLoaded] = useState(false)
+
+    // useEffect(()=>{
+    //     dispatch(getUserById(userId))
+    //     .then(()=>{
+    //         setIsLoaded(true)
+    //     }
+    //         )},[sessionUser])
+
     return (
         <>
-        <h1>Hello from Home</h1>
+        <h1>Hello {sessionUser.first_name}</h1>
         </>
     )
 }
