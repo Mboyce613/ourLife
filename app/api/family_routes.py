@@ -5,15 +5,15 @@ from app.models import db
 
 family_routes = Blueprint('families', __name__)
 
-@family_routes.route('/<int:userId>')
+@family_routes.route('/<int:family_id>')
 @login_required
 # @login_required
-def families(userId):
+def families(family_id):
     """
     Query for all families and returns them in a list of families dictionaries
     """
-    users = User.query.filter(User.id == userId)
-    return {'families': [user.to_dict() for user in users]}
+    family = Family.query.filter(Family.id == family_id)
+    return {'family': [fam.to_dict() for fam in family]}
 
 
 @family_routes.route('/<int:id>', methods=["DELETE"])
