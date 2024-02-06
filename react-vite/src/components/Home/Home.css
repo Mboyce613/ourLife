@@ -1,0 +1,4 @@
+.homepage{
+    display: grid;
+    /* grid: minmax(400px, min-content) / repeat(2, auto); */
+}
