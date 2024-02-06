@@ -24,5 +24,14 @@ class Family(db.Model):
             'id': self.id,
             'name': self.name,
             'motto': self.motto,
-            'shopping_lists':[list.to_dict() for list in self.shopping_lists]
+            'shopping_lists':[list.to_dict() for list in self.shopping_lists],
+            'users':[user.to_dict_self() for user in self.users],
+        }
+    
+    def to_dict_self(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'motto': self.motto,
+            'shopping_lists':[list.to_dict() for list in self.shopping_lists],
         }
