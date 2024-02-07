@@ -41,7 +41,7 @@ const Family = (homeState) => {
             <p>{fam.name}</p>
             {Object.values(fam.users).map(user=>{
                 if(user){
-                    return <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent={User}/></div>
+                    return <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id}/>}/></div>
 
                 }
             })}
