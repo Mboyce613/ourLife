@@ -12,7 +12,7 @@ export const getFamiliesByIds = (families) => async (dispatch)=>{
         // console.log(res, '----------')
         if(res.ok){
             const data = await res.json()
-            console.log("DATA", data)
+            // console.log("DATA LINE 15", data)
             dispatch(loadFamily(data))
             return data
         }
@@ -28,15 +28,26 @@ const familyReducer = (state = {}, action)=>{
             newState = {...state}
             // console.log(action.avatar, '-----store')
             if(action.family.family && action.family.family !== undefined){
-                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 action.family.family.forEach(fam => {
-                    console.log("33",fam.users)
-
+                    // console.log("33",fam.users)
+                    const userObj = {}
                     newState[fam.id] = fam
-                    newState[fam.id].users.forEach(user=>{
-                        newState[fam.id].users[user.id] = user
+                    fam.users.forEach(user=>{
+                        // console.log("LINE37", fam.user)
+                        // console.log("LINE38", user)
+                        // userArray.push({[user.id]:user})
+                        userObj[user.id] = user
                     })
-                    newState[fam.id].users[0]=null
+                    // console.log("array on 41", userObj)
+                    newState[fam.id].users = userObj
+                    // newState[fam.id].users.forEach(user=>{
+                    //     console.log("LINE 37", user)
+                    //     console.log("LINE 38", newState[fam.id].users[user.id])
+                        // newState[fam.id].users[user.id] = user
+                        
+                    // })
+                    // newState[fam.id].users[0]=null
                 })
             }else{
                 newState = null

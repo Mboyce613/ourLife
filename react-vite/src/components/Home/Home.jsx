@@ -9,7 +9,7 @@ import Shopping from "../Shopping/Shopping";
 
 const Home = () => {
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser)
+    // console.log(sessionUser)
     // const dispatch = useDispatch()
     // const [isLoaded, setIsLoaded] = useState(false)
 
