@@ -6,15 +6,15 @@ import { getFamiliesByIds } from "../../redux/family";
 const Family = (homeState) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
-    const userFamilies = homeState
+    const sessionUser = homeState.sessionUser
     const userFamiliesIds = []
     
-    // if( userFamilies ){
-    //     userFamilies.forEach(fam => {
-    //         userFamiliesIds.push(fam.id)
-    //     });
-    // }
-    console.log("userFamilies from family", userFamilies)
+    if( sessionUser.families ){
+        sessionUser.families.forEach(fam => {
+            userFamiliesIds.push(fam.id)
+        });
+    }
+    console.log("sessionUser from family", sessionUser)
     // console.log("Ids from families", userFamiliesIds)
     // const sessionUser = useSelector((state) => state.session.user);
     // console.log(sessionUser.appointments)

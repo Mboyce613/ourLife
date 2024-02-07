@@ -24,13 +24,19 @@ const familyReducer = (state = {}, action)=>{
     let newState = null
     switch(action.type){
         case LOAD_FAMILY:
-            console.log("ACTION", action, 'line 28')
+            // console.log("ACTION", action, 'line 28')
             newState = {...state}
-            console.log(action.avatar, '-----store')
+            // console.log(action.avatar, '-----store')
             if(action.family.family && action.family.family !== undefined){
                 console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 action.family.family.forEach(fam => {
+                    console.log("33",fam.users)
+
                     newState[fam.id] = fam
+                    newState[fam.id].users.forEach(user=>{
+                        newState[fam.id].users[user.id] = user
+                    })
+                    newState[fam.id].users[0]=null
                 })
             }else{
                 newState = null
