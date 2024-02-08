@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { getUserById } from "../../redux/user";
 import { getFamiliesByIds } from "../../redux/family";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import User from "../User/User";
