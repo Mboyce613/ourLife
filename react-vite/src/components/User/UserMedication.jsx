@@ -1,10 +1,12 @@
+import OpenModalButton from "../OpenModalButton/OpenModalButton"
+import MedicationModal from "../MedicationModal/MedicationModal"
 
-const UserMedication = (meds) => {
+const UserMedication = (props) => {
 
     return (
         <>
-        <div>{meds.name}'s Medications</div>
-        {meds.meds.map(med=>{
+        <div>{props.name}'s Medications</div>
+        {props.meds.map(med=>{
             return(
                 <>
                 <p>{med.name}</p>
@@ -15,7 +17,7 @@ const UserMedication = (meds) => {
                 </>
             )
         })}
-        <button>Add Medication</button>
+        <div><OpenModalButton buttonText="Add Medication" modalComponent ={<MedicationModal user ={props.user}/>}/></div>
         </>
     )
 }

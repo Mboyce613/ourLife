@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import familyReducer from "./family";
 import userReducer from "./user";
+import medicationReducer from "./medication";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   family: familyReducer,
   user: userReducer,
+  medication: medicationReducer
 });
 
 let enhancer;
