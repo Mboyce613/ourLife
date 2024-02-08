@@ -78,31 +78,31 @@ function sessionReducer(state = initialState, action) {
       // newState.user.id = action.payload.id
 
       if(action.payload.appointments){
-        newState.user['appointments'] = []
+        newState.user['appointments'] = {}
         action.payload.appointments.forEach(app => {
           newState.user['appointments'][app.id] = app
         });
       }
       if(action.payload.expenses){
-        newState.user['expenses'] = []
+        newState.user['expenses'] = {}
         action.payload.expenses.forEach(exp => {
           newState.user['expenses'][exp.id] = exp
         });
       }
       if(action.payload.incomes){
-        newState.user['incomes'] = []
+        newState.user['incomes'] = {}
         action.payload.incomes.forEach(income => {
           newState.user['incomes'][income.id] = income
         });
       }
       if(action.payload.medications){
-        newState.user['medications'] = []
+        newState.user['medications'] = {}
         action.payload.medications.forEach(med => {
           newState.user['medications'][med.id] = med
         });
       }
       if(action.payload.families){
-        newState.user['families'] = []
+        newState.user['families'] = {}
         action.payload.families.forEach(family => {
           const newList = []
           // console.log("SHOPP", family.shopping_lists)

@@ -5,7 +5,7 @@ import { thunkSignup } from "../../redux/session";
 import { createMedicationForUser } from "../../redux/medication";
 import { useModal } from "../../context/Modal";
 
-function MedicationModal(props) {
+function MedicationUpdateModal(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -102,4 +102,4 @@ function MedicationModal(props) {
   );
 }
 
-export default MedicationModal
+export default MedicationUpdateModal

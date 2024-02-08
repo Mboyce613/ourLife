@@ -11,7 +11,7 @@ const Family = (homeState) => {
     const userFamiliesIds = []
     
     if( sessionUser.families ){
-        sessionUser.families.forEach(fam => {
+        Object.values(sessionUser.families).forEach(fam => {
             userFamiliesIds.push(fam.id)
         });
     }
