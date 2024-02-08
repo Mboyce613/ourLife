@@ -3,17 +3,17 @@ import MedicationModal from "../MedicationModal/MedicationModal"
 import MedicationUpdateModal from "../MedicationModal/MedicationUpdateModal"
 
 const UserMedication = (props) => {
-
+// console.log("Line6", props)
     return (
         <>
         <div>{props.name}'s Medications</div>
-        {props.meds.map(med=>{
+        {Object.values(props.meds).map(med=>{
             return(
                 <>
                 <p>{med.name}</p>
                 <p>{med.dosage}</p>
                 <p>{med.time}</p>
-                <OpenModalButton buttonText="Update Medication" modalComponent ={<MedicationUpdateModal medId ={med.id}/>}/>
+                <OpenModalButton buttonText="Update Medication" modalComponent ={<MedicationUpdateModal medId ={med.id} user ={props.user}/>}/>
                 <button>Remove Medication</button>
                 </>
             )

@@ -6,16 +6,19 @@ import { createMedicationForUser } from "../../redux/medication";
 import { useModal } from "../../context/Modal";
 
 function MedicationUpdateModal(props) {
+    const theMed = props.user.medications[props.medId]
+    console.log("THEMED", theMed)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [dosage, setDosage] = useState("");
-  const [time, setTime] = useState("");
+  const [name, setName] = useState(theMed.name);
+  const [dosage, setDosage] = useState(theMed.dosage);
+  const [time, setTime] = useState(theMed.time);
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-//   console.log("PORPS LINE 14", props)
+  console.log("PORPS LINE 14", props)
   const userId = props.user.id
+
 //   console.log("USERID", userId)
 
 
@@ -48,7 +51,7 @@ function MedicationUpdateModal(props) {
         name: name,
         dosage: dosage,
         time: time,
-        user_id: userId
+        id: theMed.id
       })
     );
 

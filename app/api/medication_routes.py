@@ -16,7 +16,21 @@ def medication_by_user(userId):
     medications = Medication.query.filter(Medication.user_id == userId)
     return {'medications': [medication.to_dict() for medication in medications]}
 
+@medication_routes.route('/<int:id>', methods=["PUT"])
+# @login_required
+def medication_update(id):
+    """
+    Query for a medication by id and update that medication
+    """
+    medication = Medication.query.get(id)
+    med = request.json
+    medication.name = med['name']
+    medication.dosage = med['dosage']
+    medication.time = med['time']
+    db.session.add(medication)
+    db.session.commit()
 
+    return medication.to_dict()
 
 @medication_routes.route('/<int:id>', methods=["DELETE"])
 @login_required

@@ -55,12 +55,6 @@ const userReducer = (state = {}, action)=>{
                             newState['medications'][app.id] = app
                         });
                       }
-                    // if(ele.families){
-                    //     newState['families'] = {}
-                    //     ele.families.forEach(app => {
-                    //         newState['families'][app.id] = app
-                    //     });
-                    //   }
                     if(ele.families){
                         newState['families'] = {}
                         ele.families.forEach(family => {
