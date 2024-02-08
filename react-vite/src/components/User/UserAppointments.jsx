@@ -1,23 +1,26 @@
-import { getUserById } from "../../redux/user"
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 
 const UserAppointments = (apps) => {
-    const dispatch = useDispatch()
-    const [isLoaded, setIsLoaded] = useState(false)
-    // const theUser = useSelector((state) => state.user);
-    // console.log("LINE 9", theUser)
-    // useEffect(()=>{
-    //     dispatch(getUserById(userId.userId))
-    //     .then(()=>{
-    //         setIsLoaded(true)
-    //     }
-    //         )},[])
-    return (
-        <>
-        <div>Hello from UserAppointments</div>
-        </>
-    )
+
+// console.log(apps)
+return (
+    <>
+    <div>{apps.name}'s Appointments</div>
+    {apps.apps.map(app=>{
+        return(
+            <>
+            <p>{app.name}</p>
+            <p>{app.start_date}</p>
+            {app.duration === 1 && <p>{app.duration} Hour</p>}
+            {app.duration > 1 && <p>{app.duration} Hours</p>}
+            <button>Update Appointment</button>
+            <button>Remove Appointment</button>
+            </>
+        )
+    })}
+    <button>Add Appointment</button>
+    </>
+)
 }
 
 export default UserAppointments
