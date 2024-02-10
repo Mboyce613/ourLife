@@ -1,24 +1,27 @@
+import AppointmentCreateModal from "../AppointmentModal/AppointmentCreateModal"
+import AppointmentUpdateModal from "../AppointmentModal/AppointmentUpdateModal"
+import AppointmentDeleteModal from "../AppointmentModal/AppointmentDeleteModal"
+import OpenModalButton from "../OpenModalButton/OpenModalButton"
 
+const UserAppointments = (props) => {
 
-const UserAppointments = (apps) => {
-
-// console.log(apps)
+console.log(props)
 return (
     <>
-    <div>{apps.name}'s Appointments</div>
-    {apps.apps.map(app=>{
+    <div>{props.name}'s Appointments</div>
+    {Object.values(props.apps).map(app=>{
         return(
             <>
             <p>{app.name}</p>
             <p>{app.start_date}</p>
             {app.duration === 1 && <p>{app.duration} Hour</p>}
             {app.duration > 1 && <p>{app.duration} Hours</p>}
-            <button>Update Appointment</button>
-            <button>Remove Appointment</button>
+            <OpenModalButton buttonText="Update Appointment" modalComponent ={<AppointmentUpdateModal appointmentId ={app.id} user ={props.user}/>}/>
+            <OpenModalButton buttonText="Remove Appointment" modalComponent ={<AppointmentDeleteModal appointmentId ={app.id} user ={props.user}/>}/>
             </>
         )
     })}
-    <button>Add Appointment</button>
+    <OpenModalButton buttonText="Add Appointment" modalComponent ={<AppointmentCreateModal  user ={props.user}/>}/>
     </>
 )
 }

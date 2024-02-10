@@ -11,6 +11,7 @@ import userReducer from "./user";
 import medicationReducer from "./medication";
 import incomeReducer from "./income";
 import expenseReducer from "./expense";
+import appointmentReducer from "./appointment"
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   medication: medicationReducer,
   income: incomeReducer,
-  expense: expenseReducer
+  expense: expenseReducer,
+  appointment: appointmentReducer
 });
 
 let enhancer;

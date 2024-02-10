@@ -52,6 +52,7 @@ def income_create():
     """
     Create income and returns it
     """
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LINE 55")
     inc = request.json
     name = inc['name']
     amount = inc['amount']
