@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createMedicationForUser } from "../../redux/medication";
+import { updateMedicationForUser } from "../../redux/medication";
 import { useModal } from "../../context/Modal";
 
 function MedicationUpdateModal(props) {
@@ -44,7 +44,7 @@ function MedicationUpdateModal(props) {
       }
 
     const serverResponse = await dispatch(
-        createMedicationForUser({
+        updateMedicationForUser({
         name: name,
         dosage: dosage,
         time: time,

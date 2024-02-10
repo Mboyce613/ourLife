@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Appointment
 from app.models import db
+import datetime as dt
 
 
 appointment_routes = Blueprint('appointments', __name__)
@@ -25,7 +26,10 @@ def appointments_update(id):
     appointment = Appointment.query.get(id)
     app = request.json
     appointment.name = app['name']
-    appointment.request = app['request']
+    if(app['request'] == "False"):
+        appointment.request = False
+    if(app['request'] == "True"):
+        appointment.request = True
     appointment.start_date = app['start_date']
     appointment.duration = app['duration']
     appointment.user_id = app['user_id']
@@ -57,14 +61,14 @@ def appointment_create():
     print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LINE 57")
     app = request.json
     name = app['name']
-    if(app.request == "False"):
-        request = False
-    if(app.request == "True"):
-        request = True
+    if(app['request'] == "False"):
+        col_request = False
+    if(app['request'] == "True"):
+        col_request = True
     start_date = app['start_date']
-    duration = app['duration']
+    duration = int(app['duration'])
     user_id = app['user_id']
-    new_app = Appointment(name = name, request = request, start_date = start_date, duration = duration, user_id = user_id)
+    new_app = Appointment(name = name, request = col_request, start_date = start_date, duration = duration, user_id = user_id)
 
     db.session.add(new_app)
     db.session.commit()

@@ -13,7 +13,7 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
     name = db.Column(db.String(255), nullable=False)
-    start_date = db.Column(db.DateTime, nullable=False)
+    start_date = db.Column(db.String(255), nullable=False)
     duration = db.Column(db.Integer(), nullable=False)
     request = db.Column(db.Boolean, nullable=False)
 

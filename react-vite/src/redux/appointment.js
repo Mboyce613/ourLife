@@ -20,7 +20,7 @@ export const deleteAppointment =(appointment)=>({
 })
 
 export const createAppointmentForUser = (payload) => async (dispatch) => {
-  console.log("In Thunk?")  
+  console.log("In Thunk?", payload)  
   const res = await csrfFetch(`/api/appointments/`, {
       method: "POST",
       body: JSON.stringify(payload),
