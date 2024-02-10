@@ -63,7 +63,7 @@ function MedicationUpdateModal(props) {
 // console.log("I got to line 55")
   return (
     <>
-      <h1>Enter a new Medication</h1>
+      <h1>Enter new Medication Info</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
         <label>

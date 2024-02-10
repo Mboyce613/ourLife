@@ -25,7 +25,7 @@ def incomes_update(id):
     income = Income.query.get(id)
     inc = request.json
     income.name = inc['name']
-    income.dosage = inc['amount']
+    income.amount = inc['amount']
     income.user_id = inc['user_id']
     db.session.add(income)
     db.session.commit()

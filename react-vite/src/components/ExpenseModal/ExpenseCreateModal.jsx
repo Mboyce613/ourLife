@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateIncomeForUser } from "../../redux/income";
+import { createExpenseForUser } from "../../redux/expense";
 import { useModal } from "../../context/Modal";
 
-function IncomeUpdateModal(props) {
-    const theIncome = props.user.incomes[props.incomeId]
-    console.log("THEINCOME", theIncome)
+function ExpenseCreateModal(props) {
   const dispatch = useDispatch();
-  const [name, setName] = useState(theIncome.name);
-  const [amount, setAmount] = useState(theIncome.amount);
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+//   console.log("PORPS LINE 14", props)
   const userId = props.user.id
-
 //   console.log("USERID", userId)
 
 
@@ -22,25 +19,24 @@ function IncomeUpdateModal(props) {
     e.preventDefault();
 
     if (!name) {
-        return setErrors({
-          Name:
-            "What do you want this income to be called?",
-        });
-    }
-  
-    if (!amount) {
-        return setErrors({
-        Amount:
-            "What is the amount of the income?",
-        });
+      return setErrors({
+        Name:
+          "What do you want this expense to be called?",
+      });
     }
 
+    if (!amount) {
+        return setErrors({
+          Dosage:
+            "What is the amount of the expense?",
+        });
+      }
+
     const serverResponse = await dispatch(
-        updateIncomeForUser({
+        createExpenseForUser({
         name: name,
         amount: amount,
-        user_id: userId,
-        incomeId: theIncome.id
+        user_id: userId
       })
     );
 
@@ -53,13 +49,13 @@ function IncomeUpdateModal(props) {
     }
   };
 // console.log("I got to line 55")
-return (
+  return (
     <>
-      <h1>Enter new Income Info</h1>
+      <h1>Enter a new Expense</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Income Name
+          Expense Name
           <input
             type="text"
             value={name}
@@ -69,7 +65,7 @@ return (
         </label>
         {errors.name && <p>{errors.name}</p>}
         <label>
-          Income Amount
+          Expense Amount
           <input
             type="text"
             value={amount}
@@ -85,4 +81,4 @@ return (
   );
 }
 
-export default IncomeUpdateModal
+export default ExpenseCreateModal

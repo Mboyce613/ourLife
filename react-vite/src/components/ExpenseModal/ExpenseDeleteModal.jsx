@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux";
-import { deleteIncomeForUser } from "../../redux/income";
+import { deleteExpenseForUser } from "../../redux/expense";
 import { useModal } from "../../context/Modal";
 
 function IncomeDeleteModal(props) {
-    const theIncome = props.user.incomes[props.incomeId]
-    console.log("THEINCOME", theIncome)
+    const theExpense = props.user.expenses[props.expenseId]
+    console.log("THEEXPENSE", theExpense)
   const dispatch = useDispatch();
-
   const { closeModal } = useModal();
 
   console.log("PORPS LINE 14", props)
@@ -19,8 +18,8 @@ function IncomeDeleteModal(props) {
     e.preventDefault();
 
     const serverResponse = await dispatch(
-      deleteIncomeForUser({
-        id: theIncome.id
+        deleteExpenseForUser({
+        id: theExpense.id
       })
     );
 
@@ -39,7 +38,7 @@ function IncomeDeleteModal(props) {
 // console.log("I got to line 55")
   return (
     <>
-    <h1>{props.user.first_name}'s {theIncome.name}</h1>
+    <h1>{props.user.first_name}'s {theExpense.name}</h1>
     <h2>Are you sure you want to delete it?</h2>
     <button onClick={handleYes}>Yes</button>
     <button onClick={handleNo}>No</button>

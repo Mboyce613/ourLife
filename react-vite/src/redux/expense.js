@@ -1,97 +1,97 @@
 import { csrfFetch } from "./csrf";
 
-const CREATE_INCOME= 'income/createincome'
-const UPDATE_INCOME= 'income/updateincome'
-const DELETE_INCOME= 'income/deleteincome'
+const CREATE_EXPENSE= 'expense/createexpense'
+const UPDATE_EXPENSE= 'expense/updateexpense'
+const DELETE_EXPENSE= 'expense/deleteexpense'
 
-export const createIncome =(income)=>({
-    type:CREATE_INCOME,
-    income
+export const createExpense =(expense)=>({
+    type:CREATE_EXPENSE,
+    expense
 })
 
-export const updateIncome =(income)=>({
-    type:UPDATE_INCOME,
-    income
+export const updateExpense =(expense)=>({
+    type:UPDATE_EXPENSE,
+    expense
 })
 
-export const deleteIncome =(income)=>({
-  type:DELETE_INCOME,
-  income
+export const deleteExpense =(expense)=>({
+  type:DELETE_EXPENSE,
+  expense
 })
 
-export const createIncomeForUser = (payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/incomes`, {
+export const createExpenseForUser = (payload) => async (dispatch) => {
+    const res = await csrfFetch(`/api/expenses`, {
       method: "POST",
       body: JSON.stringify(payload),
     });
     const data = await res.json();
     if (res.ok) {
-      dispatch(createIncome(data));
+      dispatch(createExpense(data));
       return data;
     } else {
       throw res;
     }
   };
 
-  export const updateIncomeForUser = (payload) => async (dispatch) => {
+  export const updateExpenseForUser = (payload) => async (dispatch) => {
     console.log("PAYLOAD 31", payload)
-    const res = await csrfFetch(`/api/incomes/${payload.incomeId}`, {
+    const res = await csrfFetch(`/api/expenses/${payload.expenseId}`, {
       method: "PUT",
       body: JSON.stringify(payload),
     });
     const data = await res.json();
     if (res.ok) {
-      dispatch(updateIncome(data));
+      dispatch(updateExpense(data));
       return data;
     } else {
       throw res;
     }
   };
 
-  export const deleteIncomeForUser = (payload) => async (dispatch) => {
+  export const deleteExpenseForUser = (payload) => async (dispatch) => {
     console.log("PAYLOAD 52", payload)
-    const res = await csrfFetch(`/api/incomes/${payload.id}`, {
+    const res = await csrfFetch(`/api/expenses/${payload.id}`, {
       method: "DELETE"
     });
     const data = await res.json();
     if (res.ok) {
-      dispatch(deleteIncome(data));
+      dispatch(deleteExpense(data));
       return data;
     } else {
       throw res;
     }
   };
 
-const incomeReducer = (state = {}, action)=>{
+const expenseReducer = (state = {}, action)=>{
     let newState = null
     switch(action.type){
-        case CREATE_INCOME:
+        case CREATE_EXPENSE:
             newState = {...state}
             console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
-            if(action.income && action.income !== undefined){
-                console.log("LINE 27", action.income)
-                    newState[action.income.id] = action.income
+            if(action.expense && action.expense !== undefined){
+                console.log("LINE 27", action.expense)
+                    newState[action.expense.id] = action.expense
             }else{
                 newState = null
             }
             return newState
         
-        case UPDATE_INCOME:
+        case UPDATE_EXPENSE:
             newState = {...state}
             console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
-            if(action.income && action.income !== undefined){
-                console.log("LINE 27", action.income)
-                    newState[action.income.id] = action.income
+            if(action.expense && action.expense !== undefined){
+                console.log("LINE 27", action.expense)
+                    newState[action.expense.id] = action.expense
             }else{
                 newState = null
             }
             return newState
         
-        case DELETE_INCOME:
+        case DELETE_EXPENSE:
             newState = {...state}
             // console.log("ACTION", action, 'line 96')
             // console.log("STATE", newState)
@@ -102,4 +102,4 @@ const incomeReducer = (state = {}, action)=>{
     }
 }
 
-export default incomeReducer
+export default expenseReducer
