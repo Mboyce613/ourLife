@@ -9,12 +9,14 @@ import sessionReducer from "./session";
 import familyReducer from "./family";
 import userReducer from "./user";
 import medicationReducer from "./medication";
+import incomeReducer from "./income";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   family: familyReducer,
   user: userReducer,
-  medication: medicationReducer
+  medication: medicationReducer,
+  income: incomeReducer
 });
 
 let enhancer;

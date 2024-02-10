@@ -1,4 +1,4 @@
-
+import IncomeDeleteModal from "../IncomeModal/IncomeDeleteModal"
 
 const UserBudget = (budget) => {
 
@@ -23,7 +23,7 @@ return (
             <>
             <p>{income.name}</p>
             <p>${income.amount}</p>
-            <button>Update Income</button>
+            {/* <OpenModalButton buttonText="Update Income" modalComponent ={<IncomeDeleteModal incomeId ={income.id} user ={props.user}/>}/> */}
             <button>Remove Income</button>
             </>
         )
@@ -35,7 +35,7 @@ return (
             <>
             <p>{expense.name}</p>
             <p>${expense.amount}</p>
-            <button>Update Expense</button>
+            {/* <OpenModalButton buttonText="Update Expense" modalComponent ={<MedicationUpdateModal expenseId ={expense.id} user ={props.user}/>}/> */}
             <button>Remove Expense</button>
             </>
         )

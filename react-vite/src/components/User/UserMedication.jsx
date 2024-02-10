@@ -1,6 +1,7 @@
 import OpenModalButton from "../OpenModalButton/OpenModalButton"
 import MedicationModal from "../MedicationModal/MedicationModal"
 import MedicationUpdateModal from "../MedicationModal/MedicationUpdateModal"
+import MedicationDeleteModal from "../MedicationModal/MedicationDeleteModal"
 
 const UserMedication = (props) => {
 // console.log("Line6", props)
@@ -14,7 +15,7 @@ const UserMedication = (props) => {
                 <p>{med.dosage}</p>
                 <p>{med.time}</p>
                 <OpenModalButton buttonText="Update Medication" modalComponent ={<MedicationUpdateModal medId ={med.id} user ={props.user}/>}/>
-                <button>Remove Medication</button>
+                <OpenModalButton buttonText="Remove Medication" modalComponent ={<MedicationDeleteModal medId ={med.id} user ={props.user}/>}/>
                 </>
             )
         })}

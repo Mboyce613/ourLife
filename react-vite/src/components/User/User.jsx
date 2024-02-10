@@ -23,8 +23,8 @@ const User = (userId) => {
         <div>{theUser.first_name}</div>
         <div>Hello from User {userId.userId}</div>
         <div><OpenModalButton buttonText="Medications" modalComponent ={<UserMedication meds={theUser.medications} name ={theUser.first_name} user ={theUser}/>}/></div>
-        <div><OpenModalButton buttonText="Appointments" modalComponent ={<UserAppointments apps={theUser.appointments} name ={theUser.first_name}/>}/></div>
-        <div><OpenModalButton buttonText="Budget" modalComponent ={<UserBudget incomes={theUser.incomes} expenses={theUser.expenses} name ={theUser.first_name}/>}/></div>
+        <div><OpenModalButton buttonText="Appointments" modalComponent ={<UserAppointments apps={theUser.appointments} name ={theUser.first_name} user ={theUser}/>}/></div>
+        <div><OpenModalButton buttonText="Budget" modalComponent ={<UserBudget incomes={theUser.incomes} expenses={theUser.expenses} name ={theUser.first_name} user ={theUser}/>}/></div>
         </>
     )
 }

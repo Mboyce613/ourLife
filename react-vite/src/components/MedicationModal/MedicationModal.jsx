@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import { thunkSignup } from "../../redux/session";
+import { useDispatch } from "react-redux";
 import { createMedicationForUser } from "../../redux/medication";
 import { useModal } from "../../context/Modal";
 
 function MedicationModal(props) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [dosage, setDosage] = useState("");
   const [time, setTime] = useState("");

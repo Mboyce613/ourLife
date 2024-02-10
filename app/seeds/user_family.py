@@ -5,15 +5,7 @@ from sqlalchemy import insert
 
 # Adds a demo user, you can add other user_families here if you want
 def seed_user_families():
-    # demo1 = user_families(
-    #     user_id=1, family_id=1)
-    # demo2 = user_families(
-    #     user_id=2, family_id=1)
-    # demo3 = user_families(
-    #     user_id=3, family_id=1)
-    # demo1 = db.insert(user_families).values(user_id=1, family_id=1)
-    # demo2 = db.insert(user_families).values(user_id=2, family_id=1)
-    # demo3 = db.insert(user_families).values(user_id=3, family_id=1)
+    
     demo1 = User.query.get(1)
     fam1 = Family.query.get(1)
     demo1.families.append(fam1)
