@@ -7,7 +7,7 @@ const UserMedication = (props) => {
 // console.log("Line6", props)
     return (
         <>
-        <div>{props.name}'s Medications</div>
+        <div>{props.name} {"'s"} Medications</div>
         {Object.values(props.meds).map(med=>{
             return(
                 <>

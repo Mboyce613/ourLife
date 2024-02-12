@@ -8,7 +8,7 @@ const UserAppointments = (props) => {
 console.log(props)
 return (
     <>
-    <div>{props.name}'s Appointments</div>
+    <div>{props.name} {"'s"} Appointments</div>
     {Object.values(props.apps).map(app=>{
         return(
             <>

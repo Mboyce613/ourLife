@@ -14,7 +14,7 @@ function MedicationUpdateModal(props) {
   const { closeModal } = useModal();
 
   console.log("PORPS LINE 14", props)
-  const userId = props.user.id
+  // const userId = props.user.id
 
 //   console.log("USERID", userId)
 

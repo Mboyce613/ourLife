@@ -9,7 +9,7 @@ function IncomeDeleteModal(props) {
   const { closeModal } = useModal();
 
   console.log("PORPS LINE 14", props)
-  const userId = props.user.id
+  // const userId = props.user.id
 
 //   console.log("USERID", userId)
 
@@ -38,7 +38,7 @@ function IncomeDeleteModal(props) {
 // console.log("I got to line 55")
   return (
     <>
-    <h1>{props.user.first_name}'s {theExpense.name}</h1>
+    <h1>{props.user.first_name} {"'s"} {theExpense.name}</h1>
     <h2>Are you sure you want to delete it?</h2>
     <button onClick={handleYes}>Yes</button>
     <button onClick={handleNo}>No</button>

@@ -23,7 +23,7 @@ Object.values(budget.expenses).forEach(expense=>{
 
 return (
     <>
-    <div>{budget.name}'s Finances</div>
+    <div>{budget.name} {"'s"} Finances</div>
     <div>Income</div>
     {Object.values(budget.incomes).map(income=>{
         return(
