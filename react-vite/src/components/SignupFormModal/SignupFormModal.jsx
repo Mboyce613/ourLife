@@ -2,12 +2,17 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
+import { useNavigate } from "react-router-dom";
 import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [familyName, setFamilyName] = useState("");
+  const [familyMotto, setFamilyMotto] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -25,9 +30,12 @@ function SignupFormModal() {
 
     const serverResponse = await dispatch(
       thunkSignup({
-        email,
-        username,
-        password,
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        password: password,
+        family_name: familyName,
+        family_motto: familyMotto
       })
     );
 
@@ -35,6 +43,7 @@ function SignupFormModal() {
       setErrors(serverResponse);
     } else {
       closeModal();
+      navigate('home')
     }
   };
 
@@ -54,15 +63,45 @@ function SignupFormModal() {
         </label>
         {errors.email && <p>{errors.email}</p>}
         <label>
-          Username
+          First Name
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
           />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.firstName && <p>{errors.firstName}</p>}
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </label>
+        {errors.lastName && <p>{errors.lastName}</p>}
+        <label>
+          Family Name
+          <input
+            type="text"
+            value={familyName}
+            onChange={(e) => setFamilyName(e.target.value)}
+            required
+          />
+        </label>
+        {errors.familyName && <p>{errors.familyName}</p>}
+        <label>
+          Family Motto
+          <input
+            type="text"
+            value={familyMotto}
+            onChange={(e) => setFamilyMotto(e.target.value)}
+            required
+          />
+        </label>
+        {errors.familyMotto && <p>{errors.familyMotto}</p>}
         <label>
           Password
           <input
