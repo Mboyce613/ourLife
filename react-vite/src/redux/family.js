@@ -1,8 +1,20 @@
 const LOAD_FAMILY= 'family/loadFamily'
+const CREATE_USER= 'user/createuser'
+const DELETE_USER= 'user/deleteuser'
 
 export const loadFamily =(family)=>({
     type:LOAD_FAMILY,
     family
+})
+
+export const createUser =(payload)=>({
+    type:CREATE_USER,
+    payload
+})
+
+export const deleteUser =(payload)=>({
+    type:DELETE_USER,
+    payload
 })
 
 export const getFamiliesByIds = (families) => async (dispatch)=>{
@@ -19,6 +31,37 @@ export const getFamiliesByIds = (families) => async (dispatch)=>{
         return res
     }
 }
+
+export const createUserForFamily = (payload) => async (dispatch)=>{
+    const res = await fetch(`/api/users/family/${payload.id}`,{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(createUser([data]))
+        return data
+    }
+    return res
+}
+
+export const removeUserFromFamily = (payload) => async (dispatch)=>{
+    const res = await fetch(`/api/users/family/${payload.userId}`,{
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(deleteUser({user:data, family:payload.familyId}))
+        return data
+    }
+    return res
+}
+
 
 const familyReducer = (state = {}, action)=>{
     let newState = null
@@ -52,6 +95,25 @@ const familyReducer = (state = {}, action)=>{
             }else{
                 newState = null
             }
+            return newState
+        
+        case CREATE_USER:
+            newState = {...state}
+            console.log("ACTION", action, 'line 102')
+            console.log(newState)
+            // delete newState[1].users[action.user.id];
+            newState[1].users[action.payload[0].id] = action.payload[0]
+            // console.log("STATE", newState)
+            // delete newState.user.medications[action.med.id]
+            return newState
+    
+        case DELETE_USER:
+            newState = {...state}
+            console.log("ACTION", action, 'line 112')
+            delete newState[action.payload.family].users[action.payload.user.id];
+            // newState.user[action.user.id] = action.user
+            // console.log("STATE", newState)
+            // delete newState.user.medications[action.med.id]
             return newState
 
         default:return state

@@ -1,7 +1,5 @@
 const LOAD_USER= 'user/loadUser'
 const UPDATE_USER= 'user/updateuser'
-const DELETE_USER= 'user/deleteuser'
-const CREATE_USER= 'user/createuser'
 
 export const loadUser =(user)=>({
     type:LOAD_USER,
@@ -13,15 +11,6 @@ export const updateUser =(user)=>({
     user
 })
 
-export const deleteUser =(payload)=>({
-    type:DELETE_USER,
-    payload
-})
-
-export const createUser =(payload)=>({
-    type:CREATE_USER,
-    payload
-})
 
 export const getUserById = (userId) => async (dispatch)=>{
     const res = await fetch(`/api/users/${userId}`)
@@ -49,35 +38,6 @@ export const updateUserById = (payload) => async (dispatch)=>{
     return res
 }
 
-export const createUserForFamily = (payload) => async (dispatch)=>{
-    const res = await fetch(`/api/users/family/${payload.id}`,{
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-    // console.log(res, '----------')
-    if(res.ok){
-        const data = await res.json()
-        dispatch(createUser([data]))
-        return data
-    }
-    return res
-}
-
-export const removeUserFromFamily = (payload) => async (dispatch)=>{
-    const res = await fetch(`/api/users/family/${payload.userId}`,{
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-    // console.log(res, '----------')
-    if(res.ok){
-        const data = await res.json()
-        dispatch(createUser([data]))
-        return data
-    }
-    return res
-}
 
 
 const userReducer = (state = {}, action)=>{
@@ -136,23 +96,6 @@ const userReducer = (state = {}, action)=>{
             }else{
                 newState = null
             }
-            return newState
-
-            case CREATE_USER:
-            newState = {...state, user:{}}
-            console.log("ACTION", action, 'line 143')
-            console.log(newState)
-            newState.user[action.payload[0].id] = action.payload[0]
-            // console.log("STATE", newState)
-            // delete newState.user.medications[action.med.id]
-            return newState
-
-            case DELETE_USER:
-            newState = {...state}
-            console.log("ACTION", action, 'line 122')
-            // newState.user[action.user.id] = action.user
-            // console.log("STATE", newState)
-            // delete newState.user.medications[action.med.id]
             return newState
 
         default:return state

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createUserForFamily } from "../../redux/user";
+import { createUserForFamily } from "../../redux/family";
 import { useModal } from "../../context/Modal";
 
 function UserCreateModal(props) {
@@ -9,7 +9,7 @@ function UserCreateModal(props) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [isDependent, setIsDependent] = useState('');
+  const [isDependent, setIsDependent] = useState('True');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
@@ -110,6 +110,7 @@ return (
           <select
             type="dropdown"
             onChange={handleDrop}
+            defaultValue={'True'}
             required>
             <option value='True'>Yes</option>
             <option value='False'>No</option>

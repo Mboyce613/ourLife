@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteExpenseForUser } from "../../redux/expense";
-import { removeUserFromFamily } from "../../redux/user";
+import { removeUserFromFamily } from "../../redux/family";
 import { useModal } from "../../context/Modal";
 
 function UserDeleteModal(props) {
