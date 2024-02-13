@@ -1,8 +1,20 @@
 const LOAD_USER= 'user/loadUser'
+const UPDATE_USER= 'user/updateuser'
+const DELETE_USER= 'user/deleteuser'
 
 export const loadUser =(user)=>({
     type:LOAD_USER,
     user
+})
+
+export const updateUser =(user)=>({
+    type:UPDATE_USER,
+    user
+})
+
+export const deleteUser =(payload)=>({
+    type:DELETE_USER,
+    payload
 })
 
 export const getUserById = (userId) => async (dispatch)=>{
@@ -15,6 +27,37 @@ export const getUserById = (userId) => async (dispatch)=>{
     }
     return res
 }
+
+export const updateUserById = (payload) => async (dispatch)=>{
+    const res = await fetch(`/api/users/${payload.id}`,{
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(updateUser([data]))
+        return data
+    }
+    return res
+}
+
+export const removeUserFromFamily = (payload) => async (dispatch)=>{
+    const res = await fetch(`/api/users/family/${payload.userId}`,{
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(deleteUser([data]))
+        return data
+    }
+    return res
+}
+
 
 const userReducer = (state = {}, action)=>{
     let newState = null
@@ -72,6 +115,13 @@ const userReducer = (state = {}, action)=>{
             }else{
                 newState = null
             }
+            return newState
+
+            case DELETE_USER:
+            newState = {...state}
+            // console.log("ACTION", action, 'line 96')
+            // console.log("STATE", newState)
+            // delete newState.user.medications[action.med.id]
             return newState
 
         default:return state

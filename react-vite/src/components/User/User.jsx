@@ -5,15 +5,18 @@ import UserMedication from "./UserMedication";
 import UserAppointments from "./UserAppointments";
 import UserBudget from "./UserBudget";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import UserUpdateModal from './UserUpdateModal';
+import UserDeleteModal from "./UserDeleteModal";
 
 
-const User = (userId) => {
+const User = (props) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const theUser = useSelector((state) => state.user);
-    // console.log("LINE 9", theUser)
+    console.log("LINE 9", theUser)
+    console.log("THE PROPS", props)
     useEffect(()=>{
-        dispatch(getUserById(userId.userId))
+        dispatch(getUserById(props.userId))
         .then(()=>{
             setIsLoaded(true)
         }
@@ -21,11 +24,12 @@ const User = (userId) => {
     return (
         <>
         <div>{theUser.first_name}</div>
-        <div>Hello from User {userId.userId}</div>
+        <div>Hello from User {props.userId}</div>
         <div><OpenModalButton buttonText="Medications" modalComponent ={<UserMedication meds={theUser.medications} name ={theUser.first_name} user ={theUser}/>}/></div>
         <div><OpenModalButton buttonText="Appointments" modalComponent ={<UserAppointments apps={theUser.appointments} name ={theUser.first_name} user ={theUser}/>}/></div>
         <div><OpenModalButton buttonText="Budget" modalComponent ={<UserBudget incomes={theUser.incomes} expenses={theUser.expenses} name ={theUser.first_name} user ={theUser}/>}/></div>
-        <button>Remove user from Family</button>
+        <div><OpenModalButton buttonText={`Change ${theUser.first_name}${"'s"} Info`} modalComponent ={<UserUpdateModal user ={theUser}/>}/></div>
+        <div><OpenModalButton buttonText="Remove user from Family" modalComponent ={<UserDeleteModal user ={theUser} fam={props.fam}/>}/></div>
         </>
     )
 }
