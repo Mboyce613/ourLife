@@ -18,6 +18,28 @@ def remove_user(id):
     db.session.commit()
     return user.to_dict()
 
+@user_routes.route('/family/<int:id>', methods=["POST"])
+@login_required
+def create_user(id):
+    """
+    Create a user and associate them with a family, then returns that user in a dictionary
+    """
+    req = request.json
+    family = Family.query.get(req['id'])
+    first_name = req['first_name']
+    last_name = req['last_name']
+    email = req['email']
+    password = req['password']
+    if(req['is_dependent'] == 'False'):
+        is_dependent = False
+    if(req['is_dependent'] == 'True'):
+        is_dependent = True
+    user = User(first_name=first_name, last_name=last_name, email=email, is_dependent=is_dependent, password=password)
+    db.session.add(user)
+    user.families.append(family)
+    db.session.commit()
+    return user.to_dict()
+
 @user_routes.route('/')
 @login_required
 def users():

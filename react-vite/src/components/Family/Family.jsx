@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamiliesByIds } from "../../redux/family";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import UserCreateModal from "../User/UserCreateModal";
 import User from "../User/User";
 
 const Family = (homeState) => {
@@ -45,7 +46,7 @@ const Family = (homeState) => {
                     return <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam}/>}/></div>
                 }
             })}
-            <button>Add Family Member</button>
+            <OpenModalButton buttonText="Add Family Member" modalComponent ={<UserCreateModal fam={fam}/>}/>
             </>
             )}
          )}
