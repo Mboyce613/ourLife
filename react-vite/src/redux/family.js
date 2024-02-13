@@ -1,9 +1,16 @@
 const LOAD_FAMILY= 'family/loadFamily'
+const CREATE_FAMILY= 'family/createFamily'
 const CREATE_USER= 'user/createuser'
 const DELETE_USER= 'user/deleteuser'
 
+
 export const loadFamily =(family)=>({
     type:LOAD_FAMILY,
+    family
+})
+
+export const createFamily =(family)=>({
+    type:CREATE_FAMILY,
     family
 })
 
@@ -32,6 +39,22 @@ export const getFamiliesByIds = (families) => async (dispatch)=>{
     }
 }
 
+export const createFamilyThunk = (payload) => async (dispatch)=>{
+    console.log("PAYLOAD",payload)
+    const res = await fetch(`/api/families/`,{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(createFamily(data))
+        return data
+    }
+    return res
+}
+
 export const createUserForFamily = (payload) => async (dispatch)=>{
     const res = await fetch(`/api/users/family/${payload.id}`,{
         method: "POST",
@@ -41,7 +64,7 @@ export const createUserForFamily = (payload) => async (dispatch)=>{
     // console.log(res, '----------')
     if(res.ok){
         const data = await res.json()
-        dispatch(createUser([data]))
+        dispatch(createUser({user:data, family:payload.id}))
         return data
     }
     return res
@@ -97,12 +120,22 @@ const familyReducer = (state = {}, action)=>{
             }
             return newState
         
+        case CREATE_FAMILY:
+            newState = {...state}
+            console.log("ACTION", action, 'line 124')
+            console.log(newState)
+            // delete newState[1].users[action.user.id];
+            newState[action.family.id] = action.family
+            // console.log("STATE", newState)
+            // delete newState.user.medications[action.med.id]
+            return newState
+        
         case CREATE_USER:
             newState = {...state}
             console.log("ACTION", action, 'line 102')
             console.log(newState)
             // delete newState[1].users[action.user.id];
-            newState[1].users[action.payload[0].id] = action.payload[0]
+            newState[action.payload.family].users[action.payload.user.id] = action.payload.user
             // console.log("STATE", newState)
             // delete newState.user.medications[action.med.id]
             return newState

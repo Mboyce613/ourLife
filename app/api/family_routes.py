@@ -1,4 +1,4 @@
-from flask import Blueprint, session
+from flask import Blueprint, session, request
 from flask_login import login_required
 from app.models import Family, user_families, User
 from app.models import db
@@ -25,6 +25,25 @@ def family_delete(id):
     family = Family.query.get(id)
 
     db.session.delete(family)
+    db.session.commit()
+
+    return family.to_dict()
+
+@family_routes.route('/', methods=["POST"])
+@login_required
+def create_family():
+    """
+    Create a family and return it as a dictionary
+    """
+    req = request.json
+    user = User.query.get(req['userId'])
+    name = req['name']
+    motto = req['motto']
+
+    family = Family(name=name, motto=motto)
+    family.users.append(user)
+
+    db.session.add(family)
     db.session.commit()
 
     return family.to_dict()

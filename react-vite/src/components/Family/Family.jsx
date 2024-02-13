@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFamiliesByIds } from "../../redux/family";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import UserCreateModal from "../User/UserCreateModal";
+import FamilyCreateModal from "./FamilyCreateModal";
 import User from "../User/User";
 
 const Family = (homeState) => {
@@ -35,7 +36,7 @@ const Family = (homeState) => {
     return (
         <>
         <div>Hello from Family</div>
-        <button>Add Family</button>
+        <OpenModalButton buttonText="Add Family" modalComponent ={<FamilyCreateModal userId={sessionUser.id}/>}/>
         {theFamilies.map(fam=>{
             return (
             <>
