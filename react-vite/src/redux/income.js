@@ -40,7 +40,7 @@ export const createIncomeForUser = (payload) => async (dispatch) => {
   };
 
   export const updateIncomeForUser = (payload) => async (dispatch) => {
-    console.log("PAYLOAD 31", payload)
+    // console.log("PAYLOAD 31", payload)
     const res = await csrfFetch(`/api/incomes/${payload.incomeId}`, {
       method: "PUT",
       body: JSON.stringify(payload),
@@ -55,7 +55,7 @@ export const createIncomeForUser = (payload) => async (dispatch) => {
   };
 
   export const deleteIncomeForUser = (payload) => async (dispatch) => {
-    console.log("PAYLOAD 52", payload)
+    // console.log("PAYLOAD 52", payload)
     const res = await csrfFetch(`/api/incomes/${payload.id}`, {
       method: "DELETE"
     });
@@ -70,12 +70,12 @@ export const createIncomeForUser = (payload) => async (dispatch) => {
 
   export const findIncomeForUsers = (users) => async (dispatch) => {
     for(const user of users){
-      console.log("USER LINE 73", user)
+      // console.log("USER LINE 73", user)
       const res = await fetch(`/api/incomes/user/${user}`)
       // console.log(res, '----------')
       if(res.ok){
           const data = await res.json()
-          console.log("DATA LINE 78", data)
+          // console.log("DATA LINE 78", data)
           dispatch(findIncome(data))
           // return data
       }
@@ -88,11 +88,11 @@ const incomeReducer = (state = {}, action)=>{
     switch(action.type){
         case CREATE_INCOME:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.income && action.income !== undefined){
-                console.log("LINE 27", action.income)
+                // console.log("LINE 27", action.income)
                     newState[action.income.id] = action.income
             }else{
                 newState = null
@@ -101,11 +101,11 @@ const incomeReducer = (state = {}, action)=>{
         
         case UPDATE_INCOME:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.income && action.income !== undefined){
-                console.log("LINE 27", action.income)
+                // console.log("LINE 27", action.income)
                     newState[action.income.id] = action.income
             }else{
                 newState = null
@@ -120,13 +120,13 @@ const incomeReducer = (state = {}, action)=>{
             return newState
 
         case FIND_INCOME:
-            console.log("ACTION", action, 'line 123')
+            // console.log("ACTION", action, 'line 123')
             newState = {...state}
             // console.log(action.avatar, '-----store')
             if(action.income.incomes && action.income.incomes !== undefined){
                 // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 action.income.incomes.forEach(inc => {
-                    console.log("33",inc)
+                    // console.log("33",inc)
                     newState[inc.id] = inc
                 })
             }else{

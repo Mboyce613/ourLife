@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFamiliesByIds } from "../../redux/family";
+import { findExpenseForUsers } from "../../redux/expense";
 import { findIncomeForUsers } from "../../redux/income";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 
@@ -37,17 +37,32 @@ const Budget = (homeState) => {
     // const famIncomes = useSelector((state) => state.income);
     // dispatch(findIncomeForUsers(theUsers))
     const famIncomes = useSelector((state) => state.income);
-    console.log(famIncomes)
+    const famExpenses = useSelector((state) => state.expense);
+    // console.log(famIncomes)
+    // console.log(famExpenses)
     let totalIncome = 0
     for (const income in famIncomes){
         totalIncome += famIncomes[income].amount
     }
-    console.log(totalIncome)
+
+    let totalExpense = 0
+    for (const expense in famExpenses){
+        totalExpense += famExpenses[expense].amount
+    }
+    // console.log(totalIncome)
     // console.log("ARRAY2", theUsers)
     
     useEffect(()=>{
-        console.log("Are you even trying?")
+        // console.log("Are you even trying?")
         dispatch(findIncomeForUsers(theUsers))
+        .then(()=>{
+            setIsLoaded(true)
+        }
+            )},[newvar])
+
+    useEffect(()=>{
+        // console.log("Are you even trying?")
+        dispatch(findExpenseForUsers(theUsers))
         .then(()=>{
             setIsLoaded(true)
         }
@@ -56,6 +71,9 @@ const Budget = (homeState) => {
     return (
         <>
         <div>Hello from Budget</div>
+        <div>Total Family Income {totalIncome}</div>
+        <div>Total Family Expense {totalExpense}</div>
+        <div>Available {totalIncome - totalExpense}</div>
         <section>
 
         </section>

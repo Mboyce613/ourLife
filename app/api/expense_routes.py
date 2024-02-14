@@ -6,6 +6,16 @@ from app.models import db
 
 expense_routes = Blueprint('expenses', __name__)
 
+@expense_routes.route('/user/<int:userId>')
+@login_required
+# @login_required
+def user_expenses(userId):
+    """
+    Query for all expenses and returns them in a list of expenses dictionaries
+    """
+    expenses = Expense.query.filter(Expense.user_id == userId)
+    return {'expenses': [expense.to_dict() for expense in expenses]}
+
 @expense_routes.route('/<int:userId>')
 @login_required
 # @login_required
