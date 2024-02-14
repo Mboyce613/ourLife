@@ -143,7 +143,7 @@ const familyReducer = (state = {}, action)=>{
         case DELETE_USER:
             newState = {...state}
             console.log("ACTION", action, 'line 112')
-            delete newState[action.payload.family];
+            delete newState[action.payload.family].users[action.payload.user.id];
             // newState.user[action.user.id] = action.user
             // console.log("STATE", newState)
             // delete newState.user.medications[action.med.id]

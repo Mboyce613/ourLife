@@ -12,6 +12,7 @@ def remove_user(id):
     """
     req = request.json
     user = User.query.get(id)
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", user)
     family = Family.query.get(req['familyId'])
     user.families.remove(family)
     db.session.add(user)
