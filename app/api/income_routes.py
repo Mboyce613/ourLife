@@ -1,10 +1,20 @@
 from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Income
-from app.models import db
+from app.models import db, User
 
 
 income_routes = Blueprint('incomes', __name__)
+
+@income_routes.route('/user/<int:userId>')
+@login_required
+# @login_required
+def user_incomes(userId):
+    """
+    Query for all incomes and returns them in a list of incomes dictionaries
+    """
+    incomes = Income.query.filter(Income.user_id == userId)
+    return {'incomes': [income.to_dict() for income in incomes]}
 
 @income_routes.route('/<int:userId>')
 @login_required

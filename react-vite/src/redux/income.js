@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const CREATE_INCOME= 'income/createincome'
 const UPDATE_INCOME= 'income/updateincome'
 const DELETE_INCOME= 'income/deleteincome'
+const FIND_INCOME= 'income/findincome'
 
 export const createIncome =(income)=>({
     type:CREATE_INCOME,
@@ -16,6 +17,11 @@ export const updateIncome =(income)=>({
 
 export const deleteIncome =(income)=>({
   type:DELETE_INCOME,
+  income
+})
+
+export const findIncome =(income)=>({
+  type:FIND_INCOME,
   income
 })
 
@@ -62,6 +68,21 @@ export const createIncomeForUser = (payload) => async (dispatch) => {
     }
   };
 
+  export const findIncomeForUsers = (users) => async (dispatch) => {
+    for(const user of users){
+      console.log("USER LINE 73", user)
+      const res = await fetch(`/api/incomes/user/${user}`)
+      // console.log(res, '----------')
+      if(res.ok){
+          const data = await res.json()
+          console.log("DATA LINE 78", data)
+          dispatch(findIncome(data))
+          // return data
+      }
+      // return res
+  }
+}
+
 const incomeReducer = (state = {}, action)=>{
     let newState = null
     switch(action.type){
@@ -96,6 +117,21 @@ const incomeReducer = (state = {}, action)=>{
             // console.log("ACTION", action, 'line 96')
             // console.log("STATE", newState)
             // delete newState.user.medications[action.med.id]
+            return newState
+
+        case FIND_INCOME:
+            console.log("ACTION", action, 'line 123')
+            newState = {...state}
+            // console.log(action.avatar, '-----store')
+            if(action.income.incomes && action.income.incomes !== undefined){
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                action.income.incomes.forEach(inc => {
+                    console.log("33",inc)
+                    newState[inc.id] = inc
+                })
+            }else{
+                newState = null
+            }
             return newState
 
         default:return state

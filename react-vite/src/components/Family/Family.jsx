@@ -11,7 +11,7 @@ const Family = (homeState) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const sessionUser = homeState.sessionUser
-    console.log("LINE 13",sessionUser)
+    // console.log("LINE 13",sessionUser)
     const userFamiliesIds = []
     
     if( sessionUser.families ){
