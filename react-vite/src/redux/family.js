@@ -33,9 +33,9 @@ export const getFamiliesByIds = (families) => async (dispatch)=>{
             const data = await res.json()
             // console.log("DATA LINE 15", data)
             dispatch(loadFamily(data))
-            return data
+            // return data
         }
-        return res
+        // return res
     }
 }
 
@@ -143,7 +143,7 @@ const familyReducer = (state = {}, action)=>{
         case DELETE_USER:
             newState = {...state}
             console.log("ACTION", action, 'line 112')
-            delete newState[action.payload.family].users[action.payload.user.id];
+            delete newState[action.payload.family];
             // newState.user[action.user.id] = action.user
             // console.log("STATE", newState)
             // delete newState.user.medications[action.med.id]

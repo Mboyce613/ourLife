@@ -4,12 +4,14 @@ import { getFamiliesByIds } from "../../redux/family";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import UserCreateModal from "../User/UserCreateModal";
 import FamilyCreateModal from "./FamilyCreateModal";
+import FamilyDeleteModal from "./FamilyDeleteModal";
 import User from "../User/User";
 
 const Family = (homeState) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const sessionUser = homeState.sessionUser
+    console.log("LINE 13",sessionUser)
     const userFamiliesIds = []
     
     if( sessionUser.families ){
@@ -20,6 +22,7 @@ const Family = (homeState) => {
     // console.log("sessionUser from family", sessionUser)
     const userFamilies = useSelector((state) => state.family);
     const theFamilies = []
+    // console.log("ARRAY", userFamiliesIds)
     for (const family in userFamilies){
         // console.log(userFamilies[family])
         theFamilies.push(userFamilies[family])
@@ -40,7 +43,7 @@ const Family = (homeState) => {
         {theFamilies.map(fam=>{
             return (
             <>
-            <p>{fam.name} <button>Remove Family</button></p>
+            <p>{fam.name} <OpenModalButton buttonText="Remove Family" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></p>
             <div>{fam.motto}</div>
             {Object.values(fam.users).map(user=>{
                 if(user){
@@ -50,7 +53,7 @@ const Family = (homeState) => {
             <OpenModalButton buttonText="Add Family Member" modalComponent ={<UserCreateModal fam={fam}/>}/>
             </>
             )}
-         )}
+        )}
         <section>
 
         </section>
