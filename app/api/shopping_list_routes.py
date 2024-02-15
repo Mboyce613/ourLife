@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import Shopping_list
 from app.models import db
@@ -27,6 +27,26 @@ def shopping_list_delete(id):
     shopping_list = Shopping_list.query.get(id)
 
     db.session.delete(shopping_list)
+    db.session.commit()
+
+    return shopping_list.to_dict()
+
+@shopping_list_routes.route('/', methods=["POST"])
+@login_required
+def shopping_list_create():
+    """
+    Query for a shopping_list by id and deletes that shopping_list
+    """
+    req = request.json
+    item_name = req['item_name']
+    if(req['request'] == "False"):
+        is_request = False
+    if(req['request'] == "True"):
+        is_request = True
+    family_id = req['family_id']
+
+    shopping_list = Shopping_list(item_name=item_name, request=is_request, family_id = family_id)
+    db.session.add(shopping_list)
     db.session.commit()
 
     return shopping_list.to_dict()

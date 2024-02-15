@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { getUserById } from "../../redux/user";
+import { createShopForFamily } from "../../redux/family";
+import ShoppingCreateModal from "./ShoppingCreateModal";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import { removeShopFromFamily } from "../../redux/family";
 
 const Shopping = (homeState) => {
     // const sessionUser = useSelector((state) => state.session.user);
     
     const userFamilies = useSelector((state) => state.family);
-    // const dispatch = useDispatch()
-    // const [isLoaded, setIsLoaded] = useState(false)
+    const dispatch = useDispatch()
+    const [item, setItem] = useState("")
 
     // useEffect(()=>{
     //     dispatch(getUserById(userId))
@@ -15,6 +18,10 @@ const Shopping = (homeState) => {
     //         setIsLoaded(true)
     //     }
     //         )},[sessionUser])
+    const handleDelete = async(shop)=>{
+        console.log(shop)
+        dispatch(removeShopFromFamily(shop.id))
+    }
 
     return (
         <>
@@ -27,10 +34,11 @@ const Shopping = (homeState) => {
             {Object.values(fam.shopping_lists).map(shop=>{
                 return(
                     <>
-                    <li>{shop.item_name} <button>x</button></li>
+                    <li>{shop.item_name} <button onClick={()=>handleDelete(shop)}>x</button></li>
                     </>
                 )
             })}
+        <div><OpenModalButton buttonText="Add Item" modalComponent ={<ShoppingCreateModal fam={fam}/>}/></div>
             </>
             )
         })}

@@ -35,7 +35,7 @@ const Calendar = (homeState) => {
 
     return (
         <>
-        <div>Hello from Calendar</div>
+        <div>Appointments From All Families</div>
         <section>
         {Object.values(famAppointments).map(app=>{
             return(

@@ -72,6 +72,6 @@ def income_create():
     db.session.add(new_inc)
     db.session.commit()
 
-    return request.json
+    return new_inc.to_dict()
 
 ##! Have read and delete, need post and put.

@@ -38,12 +38,11 @@ const Family = (homeState) => {
 
     return (
         <>
-        <div>Hello from Family</div>
-        <OpenModalButton buttonText="Add Family" modalComponent ={<FamilyCreateModal userId={sessionUser.id}/>}/>
+        <div>{sessionUser.first_name}{"'s"} Families</div>
         {theFamilies.map(fam=>{
             return (
             <>
-            <p>{fam.name} <OpenModalButton buttonText="Remove Family" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></p>
+            <p>The {fam.name} Family <OpenModalButton buttonText="Remove Family" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></p>
             <div>{fam.motto}</div>
             {Object.values(fam.users).map(user=>{
                 if(user){
@@ -54,6 +53,7 @@ const Family = (homeState) => {
             </>
             )}
         )}
+        <div><OpenModalButton buttonText="Add Family" modalComponent ={<FamilyCreateModal userId={sessionUser.id}/>}/></div>
         <section>
 
         </section>

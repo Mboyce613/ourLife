@@ -1,7 +1,9 @@
 const LOAD_FAMILY= 'family/loadFamily'
 const CREATE_FAMILY= 'family/createFamily'
-const CREATE_USER= 'user/createuser'
-const DELETE_USER= 'user/deleteuser'
+const CREATE_USER= 'family/createuser'
+const DELETE_USER= 'family/deleteuser'
+const CREATE_SHOP= 'usefamily/createshop'
+const DELETE_SHOP= 'family/deleteshop'
 
 
 export const loadFamily =(family)=>({
@@ -21,6 +23,16 @@ export const createUser =(payload)=>({
 
 export const deleteUser =(payload)=>({
     type:DELETE_USER,
+    payload
+})
+
+export const createShop =(payload)=>({
+    type:CREATE_SHOP,
+    payload
+})
+
+export const deleteShop =(payload)=>({
+    type:DELETE_SHOP,
     payload
 })
 
@@ -70,6 +82,22 @@ export const createUserForFamily = (payload) => async (dispatch)=>{
     return res
 }
 
+export const createShopForFamily = (payload) => async (dispatch)=>{
+    console.log("LINE 80", payload)
+    const res = await fetch(`/api/shopping_lists/`,{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(createShop({item:data, family:payload.id}))
+        return data
+    }
+    return res
+}
+
 export const removeUserFromFamily = (payload) => async (dispatch)=>{
     const res = await fetch(`/api/users/family/${payload.userId}`,{
         method: "PUT",
@@ -80,6 +108,19 @@ export const removeUserFromFamily = (payload) => async (dispatch)=>{
     if(res.ok){
         const data = await res.json()
         dispatch(deleteUser({user:data, family:payload.familyId}))
+        return data
+    }
+    return res
+}
+
+export const removeShopFromFamily = (id) => async (dispatch)=>{
+    const res = await fetch(`/api/shopping_lists/${id}`,{
+        method: "DELETE"
+    })
+    // console.log(res, '----------')
+    if(res.ok){
+        const data = await res.json()
+        dispatch(deleteShop(data))
         return data
     }
     return res
@@ -98,6 +139,7 @@ const familyReducer = (state = {}, action)=>{
                 action.family.family.forEach(fam => {
                     // console.log("33",fam.users)
                     const userObj = {}
+                    const shopObj = {}
                     newState[fam.id] = fam
                     fam.users.forEach(user=>{
                         // console.log("LINE37", fam.user)
@@ -107,6 +149,15 @@ const familyReducer = (state = {}, action)=>{
                     })
                     // console.log("array on 41", userObj)
                     newState[fam.id].users = userObj
+
+                    fam.shopping_lists.forEach(item=>{
+                        // console.log("LINE37", fam.item)
+                        // console.log("LINE38", item)
+                        // itemArray.push({[item.id]:item})
+                        shopObj[item.id] = item
+                    })
+                    // console.log("array on 41", userObj)
+                    newState[fam.id].shopping_lists = shopObj
                     // newState[fam.id].users.forEach(user=>{
                     //     console.log("LINE 37", user)
                     //     console.log("LINE 38", newState[fam.id].users[user.id])
@@ -144,6 +195,25 @@ const familyReducer = (state = {}, action)=>{
             newState = {...state}
             console.log("ACTION", action, 'line 112')
             delete newState[action.payload.family].users[action.payload.user.id];
+            // newState.user[action.user.id] = action.user
+            // console.log("STATE", newState)
+            // delete newState.user.medications[action.med.id]
+            return newState
+
+        case CREATE_SHOP:
+            newState = {...state}
+            console.log("ACTION", action, 'line 102')
+            console.log(newState)
+            // delete newState[1].users[action.user.id];
+            newState[action.payload.item.family_id].shopping_lists[action.payload.item.id] = action.payload.item
+            // console.log("STATE", newState)
+            // delete newState.user.medications[action.med.id]
+            return newState
+
+        case DELETE_SHOP:
+            newState = {...state}
+            console.log("ACTION", action, 'line 112')
+            delete newState[action.payload.family_id].shopping_lists[action.payload.id];
             // newState.user[action.user.id] = action.user
             // console.log("STATE", newState)
             // delete newState.user.medications[action.med.id]

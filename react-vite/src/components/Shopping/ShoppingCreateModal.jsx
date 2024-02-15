@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createIncomeForUser } from "../../redux/income";
+import { createShopForFamily } from "../../redux/family";
 import { useModal } from "../../context/Modal";
 
-function IncomeCreateModal(props) {
+function ShoppingCreateModal(props) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
+  const [request, setRequest] = useState("False");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-//   console.log("PORPS LINE 14", props)
-  const userId = props.user.id
+  console.log("PORPS LINE 14", props)
+//   const userId = props.user.id
 //   console.log("USERID", userId)
 
 
@@ -21,22 +21,22 @@ function IncomeCreateModal(props) {
     if (!name) {
       return setErrors({
         Name:
-          "What do you want this income to be called?",
+          "What is the item called?",
       });
     }
 
-    if (!amount) {
-        return setErrors({
-          Dosage:
-            "What is the amount of the income?",
-        });
-      }
+    // if (!request) {
+    //     return setErrors({
+    //       Request:
+    //         "Is it a request?",
+    //     });
+    //   }
 
     const serverResponse = await dispatch(
-        createIncomeForUser({
-        name: name,
-        amount: parseInt(amount),
-        user_id: userId
+        createShopForFamily({
+        item_name: name,
+        request: request,
+        family_id: props.fam.id
       })
     );
 
@@ -51,11 +51,11 @@ function IncomeCreateModal(props) {
 // console.log("I got to line 55")
   return (
     <>
-      <h1>Enter a new Income</h1>
+      <h1>Add an Item to the Families Shopping List</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Income Name
+          Item Name
           <input
             type="text"
             value={name}
@@ -64,21 +64,10 @@ function IncomeCreateModal(props) {
           />
         </label>
         {errors.name && <p>{errors.name}</p>}
-        <label>
-          Income Amount
-          <input
-            type="text"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-        </label>
-        {errors.amount && <p>{errors.amount}</p>}
-        
         <button type="submit">Confirm</button>
       </form>
     </>
   );
 }
 
-export default IncomeCreateModal
+export default ShoppingCreateModal
