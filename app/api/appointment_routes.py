@@ -7,6 +7,16 @@ import datetime as dt
 
 appointment_routes = Blueprint('appointments', __name__)
 
+@appointment_routes.route('/user/<int:userId>')
+@login_required
+# @login_required
+def user_appointments(userId):
+    """
+    Query for all appointments and returns them in a list of appointments dictionaries
+    """
+    appointments = Appointment.query.filter(Appointment.user_id == userId)
+    return {'appointments': [appointment.to_dict() for appointment in appointments]}
+
 @appointment_routes.route('/<int:userId>')
 @login_required
 # @login_required

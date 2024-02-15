@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const CREATE_APPOINTMENT= 'appointment/createappointment'
 const UPDATE_APPOINTMENT= 'appointment/updateappointment'
 const DELETE_APPOINTMENT= 'appointment/deleteappointment'
+const FIND_APPOINTMENT= 'appointment/findappointment'
 
 export const createAppointment =(appointment)=>({
     type:CREATE_APPOINTMENT,
@@ -16,6 +17,11 @@ export const updateAppointment =(appointment)=>({
 
 export const deleteAppointment =(appointment)=>({
   type:DELETE_APPOINTMENT,
+  appointment
+})
+
+export const findAppointment =(appointment)=>({
+  type:FIND_APPOINTMENT,
   appointment
 })
 
@@ -63,6 +69,21 @@ export const createAppointmentForUser = (payload) => async (dispatch) => {
     }
   };
 
+  export const findAppointmentForUsers = (users) => async (dispatch) => {
+    for(const user of users){
+      // console.log("USER LINE 73", user)
+      const res = await fetch(`/api/appointments/user/${user}`)
+      // console.log(res, '----------')
+      if(res.ok){
+          const data = await res.json()
+          // console.log("DATA LINE 78", data)
+          dispatch(findAppointment(data))
+          // return data
+      }
+      // return res
+  }
+}
+
 const appointmentReducer = (state = {}, action)=>{
     let newState = null
     switch(action.type){
@@ -97,6 +118,21 @@ const appointmentReducer = (state = {}, action)=>{
             // console.log("ACTION", action, 'line 96')
             // console.log("STATE", newState)
             // delete newState.user.medications[action.med.id]
+            return newState
+
+        case FIND_APPOINTMENT:
+            // console.log("ACTION", action, 'line 123')
+            newState = {...state}
+            // console.log(action.avatar, '-----store')
+            if(action.appointment.appointments && action.appointment.appointments !== undefined){
+                // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                action.appointment.appointments.forEach(app => {
+                    // console.log("33",app)
+                    newState[app.id] = app
+                })
+            }else{
+                newState = null
+            }
             return newState
 
         default:return state
