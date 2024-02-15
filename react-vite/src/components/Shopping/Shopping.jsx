@@ -1,10 +1,11 @@
-// import { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import { getUserById } from "../../redux/user";
 
 const Shopping = (homeState) => {
     // const sessionUser = useSelector((state) => state.session.user);
-    // console.log(sessionUser.appointments)
+    
+    const userFamilies = useSelector((state) => state.family);
     // const dispatch = useDispatch()
     // const [isLoaded, setIsLoaded] = useState(false)
 
@@ -17,9 +18,22 @@ const Shopping = (homeState) => {
 
     return (
         <>
-        <div>Hello from Shopping</div>
+        <div>Shopping Lists</div>
         <section>
-
+        {Object.values(userFamilies).map(fam=>{
+            return(
+            <>
+            <div>{fam.name}{' '}Family</div>
+            {Object.values(fam.shopping_lists).map(shop=>{
+                return(
+                    <>
+                    <li>{shop.item_name} <button>x</button></li>
+                    </>
+                )
+            })}
+            </>
+            )
+        })}
         </section>
         </>
     )
