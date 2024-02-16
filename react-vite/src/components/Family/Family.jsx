@@ -49,7 +49,7 @@ const Family = (homeState) => {
                 if(user){
                     return (
                         <>
-                    {(!dependent || user.id === sessionUser.id) && <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam}/>}/></div>}
+                    {(!dependent || user.id === sessionUser.id) && <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam} dependent={dependent}/>}/></div>}
                     {dependent && <div><button>{`${user.first_name} ${user.last_name}`}</button></div>}
                     </>
                     )
