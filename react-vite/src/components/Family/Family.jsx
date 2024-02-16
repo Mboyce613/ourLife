@@ -11,6 +11,7 @@ const Family = (homeState) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const sessionUser = homeState.sessionUser
+    const dependent = sessionUser.is_dependent
     // console.log("LINE 13",sessionUser)
     const userFamiliesIds = []
     
@@ -42,18 +43,23 @@ const Family = (homeState) => {
         {theFamilies.map(fam=>{
             return (
             <>
-            <p>The {fam.name} Family <OpenModalButton buttonText="Remove Family" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></p>
+            {!dependent && <p>The {fam.name} Family <OpenModalButton buttonText="Remove Family" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></p>}
             <div>{fam.motto}</div>
             {Object.values(fam.users).map(user=>{
                 if(user){
-                    return <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam}/>}/></div>
+                    return (
+                        <>
+                    {(!dependent || user.id === sessionUser.id) && <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam}/>}/></div>}
+                    {dependent && <div><button>{`${user.first_name} ${user.last_name}`}</button></div>}
+                    </>
+                    )
                 }
             })}
-            <OpenModalButton buttonText="Add Family Member" modalComponent ={<UserCreateModal fam={fam}/>}/>
+            {!dependent && <OpenModalButton buttonText="Add Family Member" modalComponent ={<UserCreateModal fam={fam}/>}/>}
             </>
             )}
         )}
-        <div><OpenModalButton buttonText="Add Family" modalComponent ={<FamilyCreateModal userId={sessionUser.id}/>}/></div>
+        {!dependent && <div><OpenModalButton buttonText="Add Family" modalComponent ={<FamilyCreateModal userId={sessionUser.id}/>}/></div>}
         <section>
 
         </section>

@@ -10,6 +10,7 @@ const Budget = (homeState) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const sessionUser = homeState.sessionUser
+    const dependent = sessionUser.is_dependent
     // console.log("LINE 13",sessionUser)
     const userFamiliesIds = []
     

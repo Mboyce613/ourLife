@@ -5,6 +5,8 @@ import { findAppointmentForUsers } from "../../redux/appointment";
 const Calendar = (homeState) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
+    const sessionUser = homeState.sessionUser
+    const dependent = sessionUser.is_dependent
     // console.log("LINE 13",sessionUser)
     
     const userFamilies = useSelector((state) => state.family);
@@ -35,8 +37,9 @@ const Calendar = (homeState) => {
 
     return (
         <>
-        <div>Appointments From All Families</div>
-        <section>
+        {!dependent && <div>Appointments From All Families</div>}
+        {dependent && <div>Your Appointments</div>}
+        {!dependent && <section>
         {Object.values(famAppointments).map(app=>{
             return(
             <>
@@ -51,7 +54,27 @@ const Calendar = (homeState) => {
             </>
             )
         })}
-        </section>
+        </section>}
+
+        {dependent && <section>
+        {Object.values(famAppointments).map(app=>{
+            // console.log("LINE 60", app)
+            if(app.user_id === sessionUser.id){
+                return(
+                <>
+                <ul>
+                <li>
+                {app.name } {`  `}
+                {app.start_date} {` `}
+                {app.duration === 1 && <>{app.duration} Hour </>}
+                {app.duration > 1 && <>{app.duration} Hours </>}
+                </li>
+                </ul>
+                </>
+                )
+            }
+        })}
+        </section>}
         </>
     )
 }

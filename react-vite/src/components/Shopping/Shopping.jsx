@@ -7,7 +7,8 @@ import { removeShopFromFamily } from "../../redux/family";
 
 const Shopping = (homeState) => {
     // const sessionUser = useSelector((state) => state.session.user);
-    
+    const sessionUser = homeState.sessionUser
+    const dependent = sessionUser.is_dependent
     const userFamilies = useSelector((state) => state.family);
     const dispatch = useDispatch()
     const [item, setItem] = useState("")
@@ -34,7 +35,7 @@ const Shopping = (homeState) => {
             {Object.values(fam.shopping_lists).map(shop=>{
                 return(
                     <>
-                    <li>{shop.item_name} <button onClick={()=>handleDelete(shop)}>x</button></li>
+                    <li>{shop.item_name} {!dependent && <button onClick={()=>handleDelete(shop)}>x</button>}</li>
                     </>
                 )
             })}
