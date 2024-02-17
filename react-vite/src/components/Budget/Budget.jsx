@@ -71,12 +71,31 @@ const Budget = (homeState) => {
 
     return (
         <>
-        <div>Hello from Budget</div>
-        <div>Total Family Income {totalIncome}</div>
-        <div>Total Family Expense {totalExpense}</div>
-        <div>Available {totalIncome - totalExpense}</div>
-        <section>
+        
+        <section className="p-6">
+        <div className="text-2xl font-bold underline">Hello from Budget</div>
 
+        <section className="p-2 grid grid-col-2 grid-row-3 gap-4">
+        <section className="col-start-1 col-end-1 row-start-1 row-end-1 text-xl bg-amber-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-2/3">
+        <div className="flex justify-center">Total Family Income</div>
+        </section>
+
+        <section className="col-start-2 col-end-2 row-start-1 row-end-1 text-xl font-bold bg-amber-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-1/3">
+        <div className="flex justify-center">{totalIncome}</div>
+        </section>
+
+        <section className="col-start-1 col-end-1 row-start-2 row-end-2 text-xl bg-amber-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-2/3">
+        <div className="flex justify-center">Total Family Expense </div>
+        </section>
+
+        <section className="col-start-2 col-end-2 row-start-2 row-end-2 text-xl font-bold bg-amber-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-1/3">
+        <div className="flex justify-center">{totalExpense}</div>
+        </section>
+
+        <section className="col-start-1 col-end-3 row-start-3 row-end-3 text-xl font-bold bg-amber-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg content-center justify-center">
+        <div className="flex justify-center ">Available {totalIncome - totalExpense}</div>
+        </section>
+        </section>
         </section>
         </>
     )
