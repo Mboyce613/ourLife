@@ -26,23 +26,31 @@ const Shopping = (homeState) => {
 
     return (
         <>
-        <div>Shopping Lists</div>
-        <section>
+        <section className="flex flex-col p-6 ">
+        <div className="text-2xl font-bold underline">Shopping Lists</div>
+        <section className="p-2 flex flex-row ">
         {Object.values(userFamilies).map(fam=>{
             return(
             <>
-            <div>{fam.name}{' '}Family</div>
+            <section className="bg-lime-200 p-2 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-1/2">
+            <div className="text-xl">{fam.name}{' '}Family</div>
             {Object.values(fam.shopping_lists).map(shop=>{
                 return(
                     <>
-                    <li>{shop.item_name} {!dependent && <button onClick={()=>handleDelete(shop)}>x</button>}</li>
+                    <section className="gap-4">
+                    {/* <li>{shop.item_name} {!dependent && <button className="flex justify-center bg-lime-100 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-lime-50 hover:font-bold text-xs opacity-75" onClick={()=>handleDelete(shop)}>x</button>}</li> */}
+                    {!dependent && <div><button className="flex justify-center bg-lime-100 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-lime-50 hover:font-bold" onClick={()=>handleDelete(shop)}>{shop.item_name}</button></div>}
+                    {dependent && <div>{shop.item_name}</div>}
+                    </section>
                     </>
                 )
             })}
-        <div><OpenModalButton buttonText="Add Item" modalComponent ={<ShoppingCreateModal fam={fam}/>}/></div>
+        <div className="flex justify-center bg-lime-100 shadow-md shadow-black p-2 border-solid border-2  border-black rounded-lg hover:bg-lime-50 hover:font-bold text-xs opacity-75 w-1/2"><OpenModalButton buttonText="Add Item" modalComponent ={<ShoppingCreateModal fam={fam}/>}/></div>
+            </section>
             </>
             )
         })}
+        </section>
         </section>
         </>
     )
