@@ -37,14 +37,15 @@ const Calendar = (homeState) => {
 
     return (
         <>
-        {!dependent && <div>Appointments From All Families</div>}
-        {dependent && <div>Your Appointments</div>}
-        {!dependent && <section>
+        <section className="flex flex-col p-6 ">
+        {!dependent && <div className="p-2 text-2xl font-bold underline">Appointments From All Families</div>}
+        {dependent && <div className="p-2 text-2xl font-bold underline">Your Appointments</div>}
+        {!dependent && <section className="p-4 flex flex-col bg-sky-200 p-2 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-2/3">
         {Object.values(famAppointments).map(app=>{
             return(
             <>
             <ul>
-            <li>
+            <li className="gap-4 text-lg">
             {app.name } {`  `}
             {app.start_date} {` `}
             {app.duration === 1 && <>{app.duration} Hour </>}
@@ -56,7 +57,7 @@ const Calendar = (homeState) => {
         })}
         </section>}
 
-        {dependent && <section>
+        {dependent && <section className="p-4 flex flex-col bg-sky-200 p-2 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-2/3">
         {Object.values(famAppointments).map(app=>{
             // console.log("LINE 60", app)
             if(app.user_id === sessionUser.id){
@@ -75,6 +76,7 @@ const Calendar = (homeState) => {
             }
         })}
         </section>}
+        </section>
         </>
     )
 }
