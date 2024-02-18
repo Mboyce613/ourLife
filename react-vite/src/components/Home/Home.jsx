@@ -22,7 +22,7 @@ const Home = () => {
     return (
         <>
         {/* <h1 className="bg-violet-200">Hello {sessionUser.first_name}</h1> */}
-        <section className="grid grid-cols-2 grid-rows-2 gap-8 p-6 bg-violet-200">
+        <section className="grid grid-cols-2 grid-rows-2 gap-8 p-6 bg-violet-300">
         {/* <p>{sessionUser.appointments[1]}</p> */}
         <div className="shadow-xl shadow-black rounded-lg bg-red-300 border-solid border-4 border-black"><Family sessionUser = {sessionUser}/></div>
         <div className="shadow-xl shadow-black rounded-lg bg-sky-300 border-solid border-4 border-black"><Calendar sessionUser = {sessionUser}/></div>
