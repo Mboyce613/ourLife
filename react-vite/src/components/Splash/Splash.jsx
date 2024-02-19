@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import meds from './meds.png'
+import money from './money.png'
+import time from './time.png'
+import food from './food.png'
+import ex from './ex.png'
+import dread from './dread.png'
 const Splash = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
@@ -28,27 +34,27 @@ const Splash = () => {
         </section>
 
         <section className=" grid grid-cols-3 grid-rows-6 justify-items-center">
-        <div className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-1 row-end-1 bg-amber-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-amber-50 hover:font-bold w-1/3">Place holder for image</div>
+        <img src={money} className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-1 row-end-1 bg-amber-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-amber-50 hover:font-bold w-1/3"/>
         <div className="self-center content-center items-center justify-center flex col-start-2 col-end-2 row-start-1 row-end-1 font-bold bg-amber-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-amber-50 hover:font-bold w-1/2">Need to manage your families Budget?</div> 
         <div className="self-center content-center items-center justify-center flex col-start-3 col-end-3 row-start-1 row-end-1 bg-amber-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-amber-50 hover:font-bold w-1/3"><OpenModalButton buttonText="Signup Now" modalComponent ={<SignupFormModal/>}/></div>
 
-        <div className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-2 row-end-2 bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/3">Place holder for image</div>
+        <img src={meds} className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-2 row-end-2 bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/3"/>
         <div className="self-center content-center items-center justify-center flex col-start-2 col-end-2 row-start-2 row-end-2 font-bold bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/2">Need to manage medications for your kids or parents?</div> 
         <div className="self-center content-center items-center justify-center flex col-start-3 col-end-3 row-start-2 row-end-2 bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/3"><OpenModalButton buttonText="Signup Now" modalComponent ={<SignupFormModal/>}/></div>
 
-        <div className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-3 row-end-3 bg-sky-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-sky-50 hover:font-bold w-1/3">Place holder for image</div>
+        <img src={time} className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-3 row-end-3 bg-sky-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-sky-50 hover:font-bold w-1/3"/>
         <div className="self-center content-center items-center justify-center flex col-start-2 col-end-2 row-start-3 row-end-3 font-bold bg-sky-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-sky-50 hover:font-bold w-1/2">Is keeping track of everyone's appointments too stressful?</div> 
         <div className="self-center content-center items-center justify-center flex col-start-3 col-end-3 row-start-3 row-end-3 bg-sky-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-sky-50 hover:font-bold w-1/3"><OpenModalButton buttonText="Signup Now" modalComponent ={<SignupFormModal/>}/></div>
 
-        <div className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-4 row-end-4 bg-lime-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-lime-50 hover:font-bold w-1/3">Place holder for image</div>
+        <img src={food} className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-4 row-end-4 bg-lime-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-lime-50 hover:font-bold w-1/3"/>
         <div className="self-center content-center items-center justify-center flex col-start-2 col-end-2 row-start-4 row-end-4 font-bold bg-lime-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-lime-50 hover:font-bold w-1/2">Do you want a central shopping list the whole family can add to?</div> 
         <div className="self-center content-center items-center justify-center flex col-start-3 col-end-3 row-start-4 row-end-4 bg-lime-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-lime-50 hover:font-bold w-1/3"><OpenModalButton buttonText="Signup Now" modalComponent ={<SignupFormModal/>}/></div>
 
-        <div className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-5 row-end-5 bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/3">Place holder for image</div>
+        <img src={ex} className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-5 row-end-5 bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/3"/>
         <div className="self-center content-center items-center justify-center flex col-start-2 col-end-2 row-start-5 row-end-5 font-bold bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/2">Do you have split custody and tired of your ex not telling you about appointments?</div> 
         <div className="self-center content-center items-center justify-center flex col-start-3 col-end-3 row-start-5 row-end-5 bg-red-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold w-1/3"><OpenModalButton buttonText="Signup Now" modalComponent ={<SignupFormModal/>}/></div>
 
-        <div className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-6 row-end-6 bg-violet-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-violet-50 hover:font-bold w-1/3">Place holder for image</div>
+        <img src={dread} className="self-center content-center items-center justify-center flex col-start-1 col-end-1 row-start-6 row-end-6 bg-violet-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-violet-50 hover:font-bold w-1/3"/>
         <div className="self-center content-center items-center justify-center flex col-start-2 col-end-2 row-start-6 row-end-6 font-bold bg-violet-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-violet-50 hover:font-bold w-1/2">Are you sick of staring into the darkness and howling into the abyss only to be met with the oppressive silence of reality?</div> 
         <div className="self-center content-center items-center justify-center flex col-start-3 col-end-3 row-start-6 row-end-6 bg-violet-200 shadow-md shadow-black p-2  border-solid border-2 border-black rounded-lg hover:bg-violet-50 hover:font-bold w-1/3"><OpenModalButton buttonText="Signup Now" modalComponent ={<SignupFormModal/>}/></div>
         </section>
