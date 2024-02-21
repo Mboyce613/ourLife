@@ -79,8 +79,9 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
+      <h1 className="font-extrabold ">Log In</h1>
+      <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
         <label>
           Email
           <input
@@ -105,6 +106,7 @@ function LoginFormModal() {
         <button onClick={handleDemoUser}>Demo Adult</button>
         <button onClick={handleDemoChild}>Demo Child</button>
       </form>
+      </section>
     </>
   );
 }

@@ -49,81 +49,93 @@ function SignupFormModal() {
 
   return (
     <>
-      <h1>Sign Up</h1>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
+      <h1 className="font-extrabold ">Fill in the fields to Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
+        <section className="grid grid-col-2 grid-row-8 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black p-4">
+        <label className="col-start-1 col-end-1 row-start-1 row-end-1 font-bold p-4 justify-center flex">
           Email
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-1 row-end-1 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={email}
+            placeholder="drizzt@forgottenrelms.com"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-2 row-end-2 font-bold p-4 justify-center flex">
           First Name
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-2 row-end-2 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={firstName}
+            placeholder="Drizzt"
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-        </label>
         {errors.firstName && <p>{errors.firstName}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-3 row-end-3 font-bold p-4 justify-center flex">
           Last Name
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-3 row-end-3 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={lastName}
+            placeholder="Do'Urden"
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-        </label>
         {errors.lastName && <p>{errors.lastName}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-4 row-end-4 font-bold p-4 justify-center flex">
           Family Name
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-4 row-end-4 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={familyName}
+            placeholder="House Do'Urden"
             onChange={(e) => setFamilyName(e.target.value)}
             required
           />
-        </label>
         {errors.familyName && <p>{errors.familyName}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-5 row-end-5 font-bold p-4 justify-center flex">
           Family Motto
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-5 row-end-5 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={familyMotto}
+            placeholder="Dont judge a book by its cover!"
             onChange={(e) => setFamilyMotto(e.target.value)}
             required
           />
-        </label>
         {errors.familyMotto && <p>{errors.familyMotto}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-6 row-end-6 font-bold p-4 justify-center flex">
           Password
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-6 row-end-6 rounded-lg border-solid border-4 border-black p-1"
             type="password"
             value={password}
+            placeholder="Make a good one"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
         {errors.password && <p>{errors.password}</p>}
-        <label>
-          Confirm Password
-          <input
+        <label className="col-start-1 col-end-1 row-start-7 row-end-7 font-bold p-4 justify-center flex">
+          Confirm Password 
+          </label>
+          <input className="col-start-2 col-end-2 row-start-7 row-end-7 rounded-lg border-solid border-4 border-black p-1"
             type="password"
             value={confirmPassword}
+            placeholder="Enter it again"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
+         </section>
+        <button className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold w-1/3 self-center hover:bg-violet-200"
+         type="submit">Sign Up</button>
       </form>
+      </section>
     </>
   );
 }
