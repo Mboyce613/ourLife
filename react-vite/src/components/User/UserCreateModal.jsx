@@ -72,9 +72,11 @@ const handleDrop = async (e) =>{
 // console.log("I got to line 55")
 return (
     <>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
       <h1>Enter the Users New Info</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
+      <section className="grid grid-col-2 grid-row-8 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black p-4">
         <label>
           First Name
           <input
@@ -128,7 +130,9 @@ return (
         </label>
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Confirm</button>
+        </section>
       </form>
+      </section>
     </>
   );
 }

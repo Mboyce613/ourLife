@@ -55,7 +55,7 @@ const Family = (homeState) => {
                         <>
                         <section className="flex justify-center bg-red-100 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold">
                     {(!dependent || user.id === sessionUser.id) && <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam} dependent={dependent}/>}/></div>}
-                    {dependent && <div ><button>{`${user.first_name} ${user.last_name}`}</button></div>}
+                    {/* {dependent && <div ><button>{`${user.first_name} ${user.last_name}`}</button></div>} */}
                     </section>
                     </>
                     )

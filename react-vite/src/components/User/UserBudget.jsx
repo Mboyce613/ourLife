@@ -23,6 +23,7 @@ Object.values(budget.expenses).forEach(expense=>{
 
 return (
     <>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
     <div>{budget.name} {"'s"} Finances</div>
     <div>Income</div>
     {Object.values(budget.incomes).map(income=>{
@@ -30,26 +31,27 @@ return (
             <>
             <p>{income.name}</p>
             <p>${income.amount}</p>
-            <OpenModalButton buttonText="Update Income" modalComponent ={<IncomeUpdateModal incomeId ={income.id} user ={budget.user}/>}/>
-            <OpenModalButton buttonText="Remove Income" modalComponent ={<IncomeDeleteModal incomeId ={income.id} user ={budget.user}/>}/>
+            <div className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold self-center hover:bg-violet-200 p-2"><OpenModalButton buttonText="Update Income" modalComponent ={<IncomeUpdateModal incomeId ={income.id} user ={budget.user}/>}/></div>
+            <div className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold self-center hover:bg-violet-200 p-2"><OpenModalButton buttonText="Remove Income" modalComponent ={<IncomeDeleteModal incomeId ={income.id} user ={budget.user}/>}/></div>
             </>
         )
     })}
-    <OpenModalButton buttonText="Add Income" modalComponent ={<IncomeCreateModal incomeId ={budget.incomes.id} user ={budget.user}/>}/>
+    <div className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold self-center hover:bg-violet-200 p-2"><OpenModalButton buttonText="Add Income" modalComponent ={<IncomeCreateModal incomeId ={budget.incomes.id} user ={budget.user}/>}/></div>
     <div>Expenses</div>
 {Object.values(budget.expenses).map(expense=>{
         return(
             <>
             <p>{expense.name}</p>
             <p>${expense.amount}</p>
-            <OpenModalButton buttonText="Update Expense" modalComponent ={<ExpenseUpdateModal expenseId ={expense.id} user ={budget.user}/>}/>
-            <OpenModalButton buttonText="Remove Expense" modalComponent ={<ExpenseDeleteModal expenseId ={expense.id} user ={budget.user}/>}/>
+            <div className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold self-center hover:bg-violet-200 p-2"><OpenModalButton buttonText="Update Expense" modalComponent ={<ExpenseUpdateModal expenseId ={expense.id} user ={budget.user}/>}/></div>
+            <div className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold self-center hover:bg-violet-200 p-2"><OpenModalButton buttonText="Remove Expense" modalComponent ={<ExpenseDeleteModal expenseId ={expense.id} user ={budget.user}/>}/></div>
             </>
         )
     })}
-    <OpenModalButton buttonText="Add Expense" modalComponent ={<ExpenseCreateModal expenseId ={budget.expenses.id} user ={budget.user}/>}/>
+    <div className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold self-center hover:bg-violet-200 p-2"><OpenModalButton buttonText="Add Expense" modalComponent ={<ExpenseCreateModal expenseId ={budget.expenses.id} user ={budget.user}/>}/></div>
 
     <div>Remaining: ${totalIncome - totalExpenses}</div>
+    </section>
     </>
 )
 }
