@@ -60,41 +60,43 @@ function MedicationModal(props) {
 // console.log("I got to line 55")
   return (
     <>
-    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
-      <h1>Enter a new Medication</h1>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-red-300 border-solid border-4 border-black">
+      <h1 className="font-extrabold ">Enter a new Medication</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
+      <section className="bg-red-200 grid grid-col-2 grid-row-3 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black p-4">
+        <label className="col-start-1 col-end-1 row-start-1 row-end-1 font-bold p-4 justify-center flex">
           Medication Name
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-1 row-end-1 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-        </label>
         {errors.name && <p>{errors.name}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-2 row-end-2 font-bold p-4 justify-center flex">
           Medication Dosage
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-2 row-end-2 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={dosage}
             onChange={(e) => setDosage(e.target.value)}
             required
           />
-        </label>
         {errors.dosage && <p>{errors.dosage}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-3 row-end-3 font-bold p-4 justify-center flex">
           Time to take Medication
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-3 row-end-3 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={time}
             onChange={(e) => setTime(e.target.value)}
             required
           />
-        </label>
         {errors.time && <p>{errors.time}</p>}
-        <button type="submit">Confirm</button>
+        </section>
+        <button className="shadow-xl shadow-black bg-red-200 border-solid border-4 border-black rounded-xl font-bold w-1/3 self-center hover:bg-red-100" type="submit">Confirm</button>
       </form>
       </section>
     </>
