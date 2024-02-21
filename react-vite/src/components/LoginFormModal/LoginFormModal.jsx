@@ -82,29 +82,33 @@ function LoginFormModal() {
     <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
       <h1 className="font-extrabold ">Log In</h1>
       <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
-        <label>
+        <section className="grid grid-col-2 grid-row-2 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black p-4">
+        <label className="col-start-1 col-end-1 row-start-1 row-end-1 font-bold p-4 justify-center flex">
           Email
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-1 row-end-1 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-2 row-end-2 font-bold p-4 justify-center flex">
           Password
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-2 row-end-2 rounded-lg border-solid border-4 border-black p-1"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
         {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-        <button onClick={handleDemoUser}>Demo Adult</button>
-        <button onClick={handleDemoChild}>Demo Child</button>
+        </section>
+        <button className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold w-1/3 self-center hover:bg-violet-200" type="submit">Log In</button>
+        <section className="flex justify-around">
+        <button className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold w-1/3 self-center hover:bg-violet-200" onClick={handleDemoUser}>Demo Adult</button>
+        <button className="shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black rounded-xl font-bold w-1/3 self-center hover:bg-violet-200" onClick={handleDemoChild}>Demo Child</button>
+        </section>
       </form>
       </section>
     </>
