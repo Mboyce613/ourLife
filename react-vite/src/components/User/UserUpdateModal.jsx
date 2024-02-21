@@ -77,53 +77,53 @@ const handleDrop = async (e) =>{
 return (
     <>
     <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
-      <h1>Enter the Users New Info</h1>
+      <h1 className="font-extrabold ">Enter the Users New Info</h1>
       {errors.server && <p>{errors.server}</p>}
       <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
       <section className="grid grid-col-2 grid-row-8 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black p-4">
-        <label>
+        <label className="col-start-1 col-end-1 row-start-1 row-end-1 font-bold p-4 justify-center flex">
           First Name
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-1 row-end-1 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-        </label>
         {errors.lastName && <p>{errors.lastName}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-2 row-end-2 font-bold p-4 justify-center flex">
           Last Name
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-2 row-end-2 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-        </label>
         {errors.firstName && <p>{errors.firstName}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-3 row-end-3 font-bold p-4 justify-center flex">
           Email
-          <input
+          </label>
+          <input className="col-start-2 col-end-2 row-start-3 row-end-3 rounded-lg border-solid border-4 border-black p-1"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
+        <label className="col-start-1 col-end-1 row-start-4 row-end-4 font-bold p-4 justify-center flex">
           Is a Dependent
-          <select
+          </label>
+          <select className="col-start-2 col-end-2 row-start-4 row-end-4 rounded-lg border-solid border-4 border-black p-1"
             type="dropdown"
             onChange={handleDrop}
             required>
             <option value='True'>Yes</option>
             <option value='False'>No</option>
           </select>
-        </label>
         {errors.duration && <p>{errors.duration}</p>}
-        <button type="submit">Confirm</button>
       </section>
+        <button className="shadow-xl shadow-black bg-violet-200 border-solid border-4 border-black rounded-xl font-bold w-1/3 self-center hover:bg-amber-100" type="submit">Confirm</button>
       </form>
       </section>
     </>

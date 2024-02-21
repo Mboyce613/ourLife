@@ -40,10 +40,12 @@ function UserDeleteModal(props) {
   return (
     <>
     <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
-    <h1>{props.user.first_name} {props.user.last_name}</h1>
-    <h2>Are you sure you want to remove this user from the {props.fam.name} family?</h2>
-    <button onClick={handleYes}>Yes</button>
-    <button onClick={handleNo}>No</button>
+    <h1 className="font-extrabold">{props.user.first_name} {props.user.last_name}</h1>
+    <h2 className="font-bold">Are you sure you want to remove this user from the {props.fam.name} family?</h2>
+    <section className="flex flex-row gap-6">
+    <button className="shadow-xl shadow-black bg-violet-200 border-solid border-4 border-black rounded-xl font-bold p-2 self-center hover:bg-violet-100" onClick={handleYes}>Yes</button>
+    <button className="shadow-xl shadow-black bg-violet-200 border-solid border-4 border-black rounded-xl font-bold p-2 self-center hover:bg-violet-100" onClick={handleNo}>No</button>
+    </section>
     </section>
     </>
   );
