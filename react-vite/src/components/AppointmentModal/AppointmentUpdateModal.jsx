@@ -69,6 +69,7 @@ const handleDrop = async (e) =>{
 // console.log("I got to line 55")
 return (
     <>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
       <h1>Enter new Appointment Info</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
@@ -127,6 +128,7 @@ return (
         {errors.duration && <p>{errors.duration}</p>}
         <button type="submit">Confirm</button>
       </form>
+      </section>
     </>
   );
 }

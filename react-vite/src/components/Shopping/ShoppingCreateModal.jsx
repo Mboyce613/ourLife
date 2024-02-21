@@ -51,6 +51,7 @@ function ShoppingCreateModal(props) {
 // console.log("I got to line 55")
   return (
     <>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
       <h1>Add an Item to the Families Shopping List</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
@@ -66,6 +67,7 @@ function ShoppingCreateModal(props) {
         {errors.name && <p>{errors.name}</p>}
         <button type="submit">Confirm</button>
       </form>
+      </section>
     </>
   );
 }

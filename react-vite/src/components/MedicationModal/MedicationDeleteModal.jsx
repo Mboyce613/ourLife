@@ -39,10 +39,12 @@ function MedicationDeleteModal(props) {
 // console.log("I got to line 55")
   return (
     <>
+    <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-violet-300 border-solid border-4 border-black">
     <h1>{props.user.first_name} {"'s"} {theMed.name}</h1>
     <h2>Are you sure you want to delete it?</h2>
     <button onClick={handleYes}>Yes</button>
     <button onClick={handleNo}>No</button>
+    </section>
     </>
   );
 }
