@@ -4,10 +4,15 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other families here if you want
 def seed_families():
-    demo = Family(
-        name='Shalakar', motto='We are the best family to ever live.')
-    
-    db.session.add(demo)
+    demo1 = Family(
+        name='Companions of the Hall', motto='Truth, Justice, Glory!.')
+    demo2 = Family(
+        name="House Do'Urden", motto='All to the Spider Queen!.')
+    demo3 = Family(
+        name='Loves', motto='Family matters the most.')
+    db.session.add(demo1)
+    db.session.add(demo2)
+    db.session.add(demo3)
     db.session.commit()
 
 

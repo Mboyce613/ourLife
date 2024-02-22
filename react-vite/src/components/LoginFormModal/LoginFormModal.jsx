@@ -56,7 +56,7 @@ function LoginFormModal() {
 
   const handleDemoChild = async (e)=>{
     e.preventDefault();
-    const demoEmail = 'marnie@aa.io'
+    const demoEmail = 'demo9@aa.io'
     const demoPassword = 'password'
     setErrors({});
     setEmail(demoEmail)

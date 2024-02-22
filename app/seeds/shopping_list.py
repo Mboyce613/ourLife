@@ -5,15 +5,33 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other shopping_lists here if you want
 def seed_shopping_lists():
     demo1 = Shopping_list(
-        family_id=1, item_name='Milk', request=False)
+        family_id=1, item_name='Rope', request=False)
     demo2 = Shopping_list(
-        family_id=1, item_name='Candy', request=True)
+        family_id=1, item_name='Rations', request=True)
     demo3 = Shopping_list(
-        family_id=1, item_name='Eggs', request=False)
+        family_id=1, item_name='Potions', request=False)
+    demo4 = Shopping_list(
+        family_id=2, item_name='Spider Silk', request=False)
+    demo5 = Shopping_list(
+        family_id=2, item_name='Rubies', request=False)
+    demo6 = Shopping_list(
+        family_id=2, item_name='Daggers', request=False)
+    demo7 = Shopping_list(
+        family_id=3, item_name='Eggs', request=False)
+    demo8 = Shopping_list(
+        family_id=3, item_name='Milk', request=False)
+    demo9 = Shopping_list(
+        family_id=3, item_name='Candy', request=False)
     
     db.session.add(demo1)
     db.session.add(demo2)
     db.session.add(demo3)
+    db.session.add(demo4)
+    db.session.add(demo5)
+    db.session.add(demo6)
+    db.session.add(demo7)
+    db.session.add(demo8)
+    db.session.add(demo9)
     db.session.commit()
 
 

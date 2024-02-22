@@ -32,7 +32,7 @@ const Splash = () => {
         <>
         <section className=" p-6 bg-violet-300 size-full">
         <section className="flex self-center content-center items-center justify-center flex-col gap-1  p-2 bg-violet-200 border-solid border-black border-2 rounded-md shadow-md shadow-black">
-        <section className=" p-2 gap-4 flex flex-col items-center bg-violet-100 border-solid border-black border-2 rounded-md shadow-md shadow-black p-2">
+        <section className=" p-2 gap-4 flex flex-col items-center bg-violet-100 border-solid border-black border-2 rounded-md shadow-md shadow-black">
         <h1 className="text-2xl font-extrabold">Welcome to OurLife</h1>
         <h2 className="text-xl font-bold">Where the most important parts of your life can be managed in one place</h2>
         <h3 className="text-lg font-bold">We are here to help you, because we are all in this life together</h3>
