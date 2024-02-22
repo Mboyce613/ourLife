@@ -12,6 +12,12 @@ import dread from './dread.png'
 const Splash = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
+    // const session = useSelector((state) => state);
+    // for(const state in session){
+    //     console.log(session[state])
+    //     session[state] = {}
+    // }
+    // console.log("LINE 20",session)
     const navigate = useNavigate();
 
     // useEffect(()=>{
