@@ -41,12 +41,17 @@ const Family = (homeState) => {
         <>
         <section className="flex flex-col p-6 ">
         <div className="text-2xl font-bold underline">{sessionUser.first_name}{"'s"} Families</div>
-        <section className="p-2 flex flex-row ">
+        <section className="p-2 flex flex-row justify-around">
         {theFamilies.map(fam=>{
             return (
             <>
-            <section className="bg-red-200 p-2 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-1/2">
-            {!dependent && <p className="text-xl">The {fam.name} Family <nobr className="flex justify-center bg-red-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold text-xs opacity-75 w-1/3 self-end"><OpenModalButton buttonText="Remove Family" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></nobr></p>}
+            <section className="bg-red-200 p-2 shadow-md shadow-black border-solid border-2 border-black rounded-lg flex gap-4 flex-col">
+            {!dependent &&
+            <section className="flex flex-row justify-between">
+            <p className="text-xl">{fam.name}</p> 
+            <div className="flex justify-center bg-red-200 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold text-xs opacity-75 w-1/3 self-end"><OpenModalButton buttonText="Remove" modalComponent ={<FamilyDeleteModal user={sessionUser} fam={fam}/>}/></div>
+            </section>
+            }
             <div className="italic">{fam.motto}</div>
             <section className="flex flex-col gap-2 w-2/3 p-2">
             {Object.values(fam.users).map(user=>{

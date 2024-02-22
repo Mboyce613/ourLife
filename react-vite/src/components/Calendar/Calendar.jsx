@@ -40,7 +40,7 @@ const Calendar = (homeState) => {
         <section className="flex flex-col p-6 ">
         {!dependent && <div className="p-2 text-2xl font-bold underline">Appointments From All Families</div>}
         {dependent && <div className="p-2 text-2xl font-bold underline">Your Appointments</div>}
-        {!dependent && <section className="p-4 flex flex-col bg-sky-200 p-2 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-2/3">
+        {!dependent && <section className="p-4 flex flex-col bg-sky-200 shadow-md shadow-black border-solid border-2 border-black rounded-lg w-2/3">
         {Object.values(famAppointments).map(app=>{
             return(
             <>
