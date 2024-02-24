@@ -43,8 +43,15 @@ const Family = (homeState) => {
         <div className="text-2xl font-bold underline">{sessionUser.first_name}{"'s"} Families</div>
         <section className="p-2 flex flex-row justify-around">
         {theFamilies.map(fam=>{
+            // console.log(fam.users)
+            // {console.log(Object.values(fam.users))}
+            // {console.log(Object.keys(fam.users))}
+            // {console.log(Object.keys(fam.users).find((el)=>el == sessionUser.id))}
+            // {Object.values(fam).includes(sessionUser.id) && }
             return (
-            <>
+                <>
+                {Object.keys(fam.users).find((el)=>el == sessionUser.id) &&
+                
             <section className="bg-red-200 p-2 shadow-md shadow-black border-solid border-2 border-black rounded-lg flex gap-4 flex-col">
             {!dependent &&
             <section className="flex flex-row justify-between">
@@ -56,12 +63,16 @@ const Family = (homeState) => {
             <section className="flex flex-col gap-2 w-2/3 p-2">
             {Object.values(fam.users).map(user=>{
                 if(user){
+                    console.log(user)
                     return (
                         <>
+                        {(!dependent || user.id === sessionUser.id) && 
                         <section className="flex justify-center bg-red-100 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold">
                     {(!dependent || user.id === sessionUser.id) && <div><OpenModalButton buttonText={`${user.first_name} ${user.last_name}`} modalComponent ={<User userId={user.id} fam={fam} dependent={dependent}/>}/></div>}
                     {/* {dependent && <div ><button>{`${user.first_name} ${user.last_name}`}</button></div>} */}
                     </section>
+                        
+                    }
                     </>
                     )
                 }
@@ -69,6 +80,7 @@ const Family = (homeState) => {
             {!dependent && <p className="flex justify-center bg-red-100 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg hover:bg-red-50 hover:font-bold text-xs opacity-75 "><OpenModalButton buttonText="Add Family Member" modalComponent ={<UserCreateModal fam={fam}/>}/></p>}
             </section>
             </section>
+            }
             </>
             )}
         )}
