@@ -13,7 +13,7 @@ import incomeReducer from "./income";
 import expenseReducer from "./expense";
 import appointmentReducer from "./appointment"
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   session: sessionReducer,
   family: familyReducer,
   user: userReducer,

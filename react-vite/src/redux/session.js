@@ -1,3 +1,6 @@
+import configureStore from "./store";
+import { rootReducer } from "./store";
+import {useSelector} from "react-redux";
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
@@ -61,7 +64,21 @@ export const thunkSignup = (user) => async (dispatch) => {
 
 export const thunkLogout = () => async (dispatch) => {
   await fetch("/api/auth/logout");
-  dispatch(removeUser());
+  // const theState = useSelector((state) => state)
+  //     console.log("LINE 67 STATE", theState)
+  // configureStore(rootReducer,{
+    //   appointment:{},
+    //   expense:{},
+    //   family:{},
+    //   income:{},
+    //   medication:{},
+    //   session:{
+      //     user:null
+      //   },
+      //   user:{}
+      // })
+      dispatch(removeUser());
+      window.location.reload()
 };
 
 const initialState = { user: null };
