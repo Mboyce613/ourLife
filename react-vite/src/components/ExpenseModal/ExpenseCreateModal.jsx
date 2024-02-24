@@ -55,7 +55,7 @@ function ExpenseCreateModal(props) {
       <h1 className="font-extrabold ">Enter a new Expense</h1>
       {errors.server && <p>{errors.server}</p>}
       <form className="gap-4 flex flex-col" onSubmit={handleSubmit}>
-      <section className="bg-amber-200 grid grid-col-2 grid-row-2 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black p-4">
+      <section className="bg-amber-200 grid grid-col-2 grid-row-2 p-2 gap-4 shadow-xl shadow-black rounded-lg border-solid border-4 border-black">
         <label className="col-start-1 col-end-1 row-start-1 row-end-1 font-bold p-4 justify-center flex">
           Expense Name
           </label>
