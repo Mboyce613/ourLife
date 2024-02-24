@@ -20,7 +20,7 @@ const Shopping = (homeState) => {
     //     }
     //         )},[sessionUser])
     const handleDelete = async(shop)=>{
-        console.log(shop)
+        // console.log(shop)
         dispatch(removeShopFromFamily(shop.id))
     }
 

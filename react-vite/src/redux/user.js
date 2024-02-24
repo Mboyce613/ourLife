@@ -48,7 +48,7 @@ const userReducer = (state = {}, action)=>{
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.user && action.user !== undefined){
-                console.log("LINE 27", action.user)
+                // console.log("LINE 27", action.user)
                 action.user.forEach(ele => {
                     newState['id'] = ele.id
                     newState['first_name'] = ele.first_name

@@ -34,7 +34,7 @@ export const createMedicationForUser = (payload) => async (dispatch) => {
   };
 
   export const updateMedicationForUser = (payload) => async (dispatch) => {
-    console.log("PAYLOAD 31", payload)
+    // console.log("PAYLOAD 31", payload)
     const res = await csrfFetch(`/api/medications/${payload.id}`, {
       method: "PUT",
       body: JSON.stringify(payload),
@@ -49,7 +49,7 @@ export const createMedicationForUser = (payload) => async (dispatch) => {
   };
 
   export const deleteMedicationForUser = (payload) => async (dispatch) => {
-    console.log("PAYLOAD 52", payload)
+    // console.log("PAYLOAD 52", payload)
     const res = await csrfFetch(`/api/medications/${payload.id}`, {
       method: "DELETE"
     });
@@ -67,11 +67,11 @@ const medicationReducer = (state = {}, action)=>{
     switch(action.type){
         case CREATE_MEDICATION:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.med && action.med !== undefined){
-                console.log("LINE 27", action.med)
+                // console.log("LINE 27", action.med)
                     newState[action.med.id] = action.med
             }else{
                 newState = null
@@ -80,11 +80,11 @@ const medicationReducer = (state = {}, action)=>{
         
         case UPDATE_MEDICATION:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.med && action.med !== undefined){
-                console.log("LINE 27", action.med)
+                // console.log("LINE 27", action.med)
                     newState[action.med.id] = action.med
             }else{
                 newState = null

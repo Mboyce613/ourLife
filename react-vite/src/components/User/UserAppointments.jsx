@@ -5,7 +5,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton"
 
 const UserAppointments = (props) => {
 
-console.log(props)
+// console.log(props)
 return (
     <>
     <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-sky-300 border-solid border-4 border-black">

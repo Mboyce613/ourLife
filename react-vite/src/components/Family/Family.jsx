@@ -63,7 +63,7 @@ const Family = (homeState) => {
             <section className="flex flex-col gap-2 w-2/3 p-2">
             {Object.values(fam.users).map(user=>{
                 if(user){
-                    console.log(user)
+                    // console.log(user)
                     return (
                         <>
                         {(!dependent || user.id === sessionUser.id) && 

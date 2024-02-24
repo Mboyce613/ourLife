@@ -4,7 +4,7 @@ import MedicationUpdateModal from "../MedicationModal/MedicationUpdateModal"
 import MedicationDeleteModal from "../MedicationModal/MedicationDeleteModal"
 
 const UserMedication = (props) => {
-console.log("Line6", props)
+// console.log("Line6", props)
     return (
         <>
         <section className="p-4 gap-4 flex flex-col items-center shadow-xl shadow-black bg-red-300 border-solid border-4 border-black">

@@ -88,7 +88,7 @@ const expenseReducer = (state = {}, action)=>{
     switch(action.type){
         case CREATE_EXPENSE:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.expense && action.expense !== undefined){
@@ -101,7 +101,7 @@ const expenseReducer = (state = {}, action)=>{
         
         case UPDATE_EXPENSE:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.expense && action.expense !== undefined){

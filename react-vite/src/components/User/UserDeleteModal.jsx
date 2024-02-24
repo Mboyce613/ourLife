@@ -4,11 +4,11 @@ import { useModal } from "../../context/Modal";
 
 function UserDeleteModal(props) {
     const theUser = props.user
-    console.log("THEUSER", theUser)
+    // console.log("THEUSER", theUser)
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
   // const userId = props.user.id
 
 //   console.log("USERID", userId)

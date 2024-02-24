@@ -9,7 +9,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton"
 
 const UserBudget = (budget) => {
 
-console.log(budget)
+// console.log(budget)
 let totalIncome = 0
 let totalExpenses = 0
 

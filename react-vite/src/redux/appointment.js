@@ -26,7 +26,7 @@ export const findAppointment =(appointment)=>({
 })
 
 export const createAppointmentForUser = (payload) => async (dispatch) => {
-  console.log("In Thunk?", payload)  
+  // console.log("In Thunk?", payload)  
   const res = await csrfFetch(`/api/appointments/`, {
       method: "POST",
       body: JSON.stringify(payload),
@@ -41,7 +41,7 @@ export const createAppointmentForUser = (payload) => async (dispatch) => {
   };
 
   export const updateAppointmentForUser = (payload) => async (dispatch) => {
-    console.log("PAYLOAD 31", payload)
+    // console.log("PAYLOAD 31", payload)
     const res = await csrfFetch(`/api/appointments/${payload.appointmentId}`, {
       method: "PUT",
       body: JSON.stringify(payload),
@@ -56,7 +56,7 @@ export const createAppointmentForUser = (payload) => async (dispatch) => {
   };
 
   export const deleteAppointmentForUser = (payload) => async (dispatch) => {
-    console.log("PAYLOAD 52", payload)
+    // console.log("PAYLOAD 52", payload)
     const res = await csrfFetch(`/api/appointments/${payload.id}`, {
       method: "DELETE"
     });
@@ -89,11 +89,11 @@ const appointmentReducer = (state = {}, action)=>{
     switch(action.type){
         case CREATE_APPOINTMENT:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.appointment && action.appointment !== undefined){
-                console.log("LINE 27", action.appointment)
+                // console.log("LINE 27", action.appointment)
                     newState[action.appointment.id] = action.appointment
             }else{
                 newState = null
@@ -102,11 +102,11 @@ const appointmentReducer = (state = {}, action)=>{
         
         case UPDATE_APPOINTMENT:
             newState = {...state}
-            console.log("STATE", newState)
+            // console.log("STATE", newState)
             // console.log("ACTION", action, 'line 24')
             // console.log(action.avatar, '-----store')
             if(action.appointment && action.appointment !== undefined){
-                console.log("LINE 27", action.appointment)
+                // console.log("LINE 27", action.appointment)
                     newState[action.appointment.id] = action.appointment
             }else{
                 newState = null

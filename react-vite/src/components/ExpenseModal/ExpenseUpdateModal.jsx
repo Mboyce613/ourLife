@@ -4,16 +4,16 @@ import { updateExpenseForUser } from "../../redux/expense";
 import { useModal } from "../../context/Modal";
 
 function ExpenseUpdateModal(props) {
-  console.log("EXPENSES PROPS", props)
+  // console.log("EXPENSES PROPS", props)
     const theExpense = props.user.expenses[props.expenseId]
-    console.log("THEEXPENSE", theExpense)
+    // console.log("THEEXPENSE", theExpense)
   const dispatch = useDispatch();
   const [name, setName] = useState(theExpense.name);
   const [amount, setAmount] = useState(theExpense.amount);
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
   const userId = props.user.id
 
 //   console.log("USERID", userId)

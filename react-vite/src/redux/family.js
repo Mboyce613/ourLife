@@ -52,7 +52,7 @@ export const getFamiliesByIds = (families) => async (dispatch)=>{
 }
 
 export const createFamilyThunk = (payload) => async (dispatch)=>{
-    console.log("PAYLOAD",payload)
+    // console.log("PAYLOAD",payload)
     const res = await fetch(`/api/families/`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -83,7 +83,7 @@ export const createUserForFamily = (payload) => async (dispatch)=>{
 }
 
 export const createShopForFamily = (payload) => async (dispatch)=>{
-    console.log("LINE 80", payload)
+    // console.log("LINE 80", payload)
     const res = await fetch(`/api/shopping_lists/`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -173,8 +173,8 @@ const familyReducer = (state = {}, action)=>{
         
         case CREATE_FAMILY:
             newState = {...state}
-            console.log("ACTION", action, 'line 124')
-            console.log(newState)
+            // console.log("ACTION", action, 'line 124')
+            // console.log(newState)
             // delete newState[1].users[action.user.id];
             newState[action.family.id] = action.family
             // console.log("STATE", newState)
@@ -183,8 +183,8 @@ const familyReducer = (state = {}, action)=>{
         
         case CREATE_USER:
             newState = {...state}
-            console.log("ACTION", action, 'line 102')
-            console.log(newState)
+            // console.log("ACTION", action, 'line 102')
+            // console.log(newState)
             // delete newState[1].users[action.user.id];
             newState[action.payload.family].users[action.payload.user.id] = action.payload.user
             // console.log("STATE", newState)
@@ -193,7 +193,7 @@ const familyReducer = (state = {}, action)=>{
     
         case DELETE_USER:
             newState = {...state}
-            console.log("ACTION", action, 'line 112')
+            // console.log("ACTION", action, 'line 112')
             delete newState[action.payload.family].users[action.payload.user.id];
             // newState.user[action.user.id] = action.user
             // console.log("STATE", newState)
@@ -202,8 +202,8 @@ const familyReducer = (state = {}, action)=>{
 
         case CREATE_SHOP:
             newState = {...state}
-            console.log("ACTION", action, 'line 102')
-            console.log(newState)
+            // console.log("ACTION", action, 'line 102')
+            // console.log(newState)
             // delete newState[1].users[action.user.id];
             newState[action.payload.item.family_id].shopping_lists[action.payload.item.id] = action.payload.item
             // console.log("STATE", newState)
@@ -212,7 +212,7 @@ const familyReducer = (state = {}, action)=>{
 
         case DELETE_SHOP:
             newState = {...state}
-            console.log("ACTION", action, 'line 112')
+            // console.log("ACTION", action, 'line 112')
             delete newState[action.payload.family_id].shopping_lists[action.payload.id];
             // newState.user[action.user.id] = action.user
             // console.log("STATE", newState)

@@ -20,7 +20,7 @@ function AppointmentCreateModal(props) {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
   const userId = props.user.id
 
 //   console.log("USERID", userId)
@@ -33,7 +33,7 @@ const handleDrop = async (e) =>{
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit?")
+    // console.log("Submit?")
 
 
     if (!name) {

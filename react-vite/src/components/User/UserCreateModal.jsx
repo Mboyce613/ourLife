@@ -4,7 +4,7 @@ import { createUserForFamily } from "../../redux/family";
 import { useModal } from "../../context/Modal";
 
 function UserCreateModal(props) {
-  console.log("USER PROPS", props)
+  // console.log("USER PROPS", props)
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -22,7 +22,7 @@ const handleDrop = async (e) =>{
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Im trying")
+    // console.log("Im trying")
     if (!firstName) {
         return setErrors({
           firstName:

@@ -4,11 +4,11 @@ import { useModal } from "../../context/Modal";
 
 function IncomeDeleteModal(props) {
     const theExpense = props.user.expenses[props.expenseId]
-    console.log("THEEXPENSE", theExpense)
+    // console.log("THEEXPENSE", theExpense)
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
   // const userId = props.user.id
 
 //   console.log("USERID", userId)

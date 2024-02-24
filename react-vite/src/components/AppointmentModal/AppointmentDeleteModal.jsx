@@ -4,12 +4,12 @@ import { useModal } from "../../context/Modal";
 
 function AppointmentDeleteModal(props) {
     const theAppointment = props.user.appointments[props.appointmentId]
-    console.log("THEAPPOINTMENT", theAppointment)
+    // console.log("THEAPPOINTMENT", theAppointment)
   const dispatch = useDispatch();
 
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
   // const userId = props.user.id
 
 //   console.log("USERID", userId)

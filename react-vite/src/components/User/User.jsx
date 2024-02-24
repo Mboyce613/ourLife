@@ -13,8 +13,8 @@ const User = (props) => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const theUser = useSelector((state) => state.user);
-    console.log("LINE 9", theUser)
-    console.log("THE PROPS", props)
+    // console.log("LINE 9", theUser)
+    // console.log("THE PROPS", props)
     useEffect(()=>{
         dispatch(getUserById(props.userId))
         .then(()=>{

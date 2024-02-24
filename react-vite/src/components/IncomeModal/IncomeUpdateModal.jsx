@@ -5,14 +5,14 @@ import { useModal } from "../../context/Modal";
 
 function IncomeUpdateModal(props) {
     const theIncome = props.user.incomes[props.incomeId]
-    console.log("THEINCOME", theIncome)
+    // console.log("THEINCOME", theIncome)
   const dispatch = useDispatch();
   const [name, setName] = useState(theIncome.name);
   const [amount, setAmount] = useState(theIncome.amount);
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
   const userId = props.user.id
 
 //   console.log("USERID", userId)

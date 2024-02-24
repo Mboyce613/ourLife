@@ -4,14 +4,14 @@ import { useModal } from "../../context/Modal";
 
 function FamilyDeleteModal(props) {
     const theFamily = props.fam
-    console.log("THEFAMILY", theFamily)
+    // console.log("THEFAMILY", theFamily)
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
 //   console.log("PROPS LINE 14", props)
   const userId = props.user.id
 
-  console.log("USERID", userId)
+  // console.log("USERID", userId)
 
 
   const handleYes = async (e) => {

@@ -5,9 +5,9 @@ import { updateUserById } from '../../redux/user'
 import { useModal } from "../../context/Modal";
 
 function UserUpdateModal(props) {
-  console.log("USER PROPS", props)
+  // console.log("USER PROPS", props)
     const theUser = props.user
-    console.log("THEUSER", theUser)
+    // console.log("THEUSER", theUser)
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(theUser.first_name);
   const [lastName, setLastName] = useState(theUser.last_name);

@@ -10,7 +10,7 @@ function ShoppingCreateModal(props) {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  console.log("PORPS LINE 14", props)
+  // console.log("PORPS LINE 14", props)
 //   const userId = props.user.id
 //   console.log("USERID", userId)
 
