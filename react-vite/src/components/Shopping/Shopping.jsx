@@ -32,7 +32,7 @@ const Shopping = (homeState) => {
         {Object.values(userFamilies).map(fam=>{
             return(
             <>
-            <section className="bg-lime-200 p-2 shadow-md shadow-black p-2 border-solid border-2 border-black rounded-lg w-1/2">
+            <section className="bg-lime-200 p-2 shadow-md shadow-black border-solid border-2 border-black rounded-lg w-1/2">
             <div className="text-xl">{fam.name}{' '}Family</div>
             {Object.values(fam.shopping_lists).map(shop=>{
                 return(
