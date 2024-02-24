@@ -35,7 +35,7 @@ function ExpenseCreateModal(props) {
     const serverResponse = await dispatch(
         createExpenseForUser({
         name: name,
-        amount: amount,
+        amount: parseInt(amount),
         user_id: userId
       })
     );

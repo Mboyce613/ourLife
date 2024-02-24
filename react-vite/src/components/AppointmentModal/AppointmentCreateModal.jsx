@@ -16,7 +16,7 @@ function AppointmentCreateModal(props) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [start_date, setStartDate] = useState(currentDate);
-  const [duration, setDuration] = useState("");
+  const [duration, setDuration] = useState(1);
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
