@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createShopForFamily } from "../../redux/family";
+// import { createShopForFamily } from "../../redux/family";
 import ShoppingCreateModal from "./ShoppingCreateModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import { removeShopFromFamily } from "../../redux/family";
@@ -11,7 +11,7 @@ const Shopping = (homeState) => {
     const dependent = sessionUser.is_dependent
     const userFamilies = useSelector((state) => state.family);
     const dispatch = useDispatch()
-    const [item, setItem] = useState("")
+    // const [item, setItem] = useState("")
 
     // useEffect(()=>{
     //     dispatch(getUserById(userId))

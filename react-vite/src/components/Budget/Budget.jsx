@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findExpenseForUsers } from "../../redux/expense";
 import { findIncomeForUsers } from "../../redux/income";
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
+// import OpenModalButton from "../OpenModalButton/OpenModalButton";
 
 
 
-const Budget = (homeState) => {
+const Budget = () => {
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
-    const sessionUser = homeState.sessionUser
-    const dependent = sessionUser.is_dependent
+    // const sessionUser = homeState.sessionUser
+    // const dependent = sessionUser.is_dependent
     // console.log("LINE 13",sessionUser)
-    const userFamiliesIds = []
+    // const userFamiliesIds = []
     
     // if( sessionUser.families ){
     //     Object.values(sessionUser.families).forEach(fam => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateExpenseForUser } from "../../redux/expense";
+// import { updateExpenseForUser } from "../../redux/expense";
 import { updateUserById } from '../../redux/user'
 import { useModal } from "../../context/Modal";
 

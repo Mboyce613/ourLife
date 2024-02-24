@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+// import { useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { useEffect } from "react";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import meds from './meds.png'
@@ -11,14 +11,14 @@ import ex from './ex.png'
 import dread from './dread.png'
 const Splash = () => {
 
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     // const session = useSelector((state) => state);
     // for(const state in session){
     //     console.log(session[state])
     //     session[state] = {}
     // }
     // console.log("LINE 20",session)
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // useEffect(()=>{
     //     if(!sessionUser === null){
