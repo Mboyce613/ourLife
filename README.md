@@ -1,6 +1,6 @@
-# Flask React Project
+# OurLife
 
-This is the starter for the Flask React project.
+This is my original family managment software! It allows you to manage medications, appointments, and budgets for individuals across multiple families.
 
 ## Getting started
 
@@ -29,65 +29,25 @@ This is the starter for the Flask React project.
    folder whenever you change your code, keeping the production version up to
    date.
 
-## Deployment through Render.com
+## Making it run
 
-First, recall that Vite is a development dependency, so it will not be used in
-production. This means that you must already have the __dist__ folder located in
-the root of your __react-vite__ folder when you push to GitHub. This __dist__
-folder contains your React code and all necessary dependencies minified and
-bundled into a smaller footprint, ready to be served from your Python API.
+1) Open a terminal and cd to the root folder
+2) Run the command 'flask run'
+3) Open another terminal and cd to the react-vite folder
+4) Run the command 'npm run dev'
 
-Begin deployment by running `npm run build` in your __react-vite__ folder and
-pushing any changes to GitHub.
+Thats it, you now have both the back end and front end servers running.
+If it didn't automatically pop up in your web browser, navigate to http://localhost:5173/
 
-Refer to your Render.com deployment articles for more detailed instructions
-about getting started with [Render.com], creating a production database, and
-deployment debugging tips.
+### Check out the demo accounts
 
-From the Render [Dashboard], click on the "New +" button in the navigation bar,
-and click on "Web Service" to create the application that will be deployed.
+There are two demo accounts, Demo Adult and Demo child. 
+Demo Adult has full functionality and visibility to all users in their families. 
+Demo Child only has partial functionality, and only visibility of their info.
 
-Select that you want to "Build and deploy from a Git repository" and click
-"Next". On the next page, find the name of the application repo you want to
-deploy and click the "Connect" button to the right of the name.
-
-Now you need to fill out the form to configure your app. Most of the setup will
-be handled by the __Dockerfile__, but you do need to fill in a few fields.
-
-Start by giving your application a name.
-
-Make sure the Region is set to the location closest to you, the Branch is set to
-"main", and Runtime is set to "Docker". You can leave the Root Directory field
-blank. (By default, Render will run commands from the root directory.)
-
-Select "Free" as your Instance Type.
-
-### Add environment variables
-
-In the development environment, you have been securing your environment
-variables in a __.env__ file, which has been removed from source control (i.e.,
-the file is gitignored). In this step, you will need to input the keys and
-values for the environment variables you need for production into the Render
-GUI.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from the **External Database URL** field)
-
-**Note:** Add any other keys and values that may be present in your local
-__.env__ file. As you work to further develop your project, you may need to add
-more environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment.
+<div>
+   <img src
+</div>
 
 ### Deploy
 
