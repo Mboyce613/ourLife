@@ -22,30 +22,7 @@ This is the starter for the Flask React project.
    `SCHEMA` with a unique name, **making sure you use the snake_case
    convention.**
 
-6. Get into your pipenv, migrate your database, seed your database, and run your
-   Flask app:
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. The React frontend has no styling applied. Copy the __.css__ files from your
-   Authenticate Me project into the corresponding locations in the
-   __react-vite__ folder to give your project a unique look.
-
-8. To run the React frontend in development, `cd` into the __react-vite__
+6. To run the React frontend in development, `cd` into the __react-vite__
    directory and run `npm i` to install dependencies. Next, run `npm run build`
    to create the `dist` folder. The starter has modified the `npm run build`
    command to include the `--watch` flag. This flag will rebuild the __dist__
