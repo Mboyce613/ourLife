@@ -45,7 +45,9 @@ There are two demo accounts, Demo Adult and Demo child.
 Demo Adult has full functionality and visibility to all users in their families. 
 Demo Child only has partial functionality, and only visibility of their info.
 
-![Alt text](/../<Screenshots>/demo1.png?raw=true "Optional Title")
+<div>
+   <img src="https://private-user-images.githubusercontent.com/122645968/321491205-d403c095-682f-4087-98ac-865f0c1fd232.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTI4MDc0MTEsIm5iZiI6MTcxMjgwNzExMSwicGF0aCI6Ii8xMjI2NDU5NjgvMzIxNDkxMjA1LWQ0MDNjMDk1LTY4MmYtNDA4Ny05OGFjLTg2NWYwYzFmZDIzMi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNDExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDQxMVQwMzQ1MTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04N2ZhOGQ2NGE5MTZlYWFiMTY2NTNmNjU3ZjFkZTk5YmQ5NmUyNmRiZjk4MDFiMTRiZDRlZTllZWE1MDNhMTQ4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.4kTlIr7ioOAeLo-YhUdYCW1ZGPIk-gDkblIKuk-iimA"
+</div>
 
 ### Deploy
 
