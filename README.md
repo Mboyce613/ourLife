@@ -39,7 +39,7 @@ This is my original family managment software! It allows you to manage medicatio
 Thats it, you now have both the back end and front end servers running.
 If it didn't automatically pop up in your web browser, navigate to http://localhost:5173/
 
-### Check out the demo accounts
+## Check out the demo accounts
 
 There are two demo accounts, Demo Adult and Demo child. 
 Demo Adult has full functionality and visibility to all users in their families. 
