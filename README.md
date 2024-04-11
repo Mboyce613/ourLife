@@ -45,9 +45,7 @@ There are two demo accounts, Demo Adult and Demo child.
 Demo Adult has full functionality and visibility to all users in their families. 
 Demo Child only has partial functionality, and only visibility of their info.
 
-<div>
-   <img src
-</div>
+![Alt text](/../<Screenshots>/demo1.png?raw=true "Optional Title")
 
 ### Deploy
 
